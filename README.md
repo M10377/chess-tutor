@@ -10,6 +10,10 @@ A personal web app for reviewing your chess.com games: import, replay, engine re
 - [ ] Phase 4: AI tutor explanations
 - [ ] Phase 5: progress and pattern dashboard
 
+## Use it
+
+Open https://m10377.github.io/chess-tutor/ (rebuilt automatically whenever `main` changes).
+
 ## Run it locally
 
 Requires [Node.js](https://nodejs.org) 20 or newer.
