@@ -124,3 +124,4 @@ strong.best { color: var(--best); }
 .puzzle-msg.correct { color: var(--best); }
 .puzzle-msg.wrong { color: var(--blunder); }
 .puzzle-msg.checking { color: var(--muted); }
+.ask-claude { display: inline-flex; gap: 6px; align-items: center; flex-wrap: wrap; }

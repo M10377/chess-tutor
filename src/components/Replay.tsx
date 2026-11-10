@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Chess } from 'chess.js'
 import { Chessboard } from 'react-chessboard'
-import type { ParsedGame } from '../lib/game'
+import { userColor, type ParsedGame } from '../lib/game'
 import { formatEval, type MoveLabel } from '../lib/review'
 import { REVIEW_DEPTH, uciToSan, useReview } from '../lib/useReview'
+import { gameSummaryQuestion, moveQuestion } from '../lib/tutor'
+import { AskClaude } from './AskClaude'
 import { EvalBar } from './EvalBar'
 import { EvalGraph } from './EvalGraph'
 
@@ -175,6 +177,15 @@ export function Replay({ game, pgn, username, meta, orientation: initialOrientat
                   Eval {formatEval(evalNow)}{bestLine && <> · engine line: {bestLine}</>}
                 </div>
               )}
+            </div>
+            <div className="row">
+              {moveReview && (
+                <AskClaude label="Ask Claude about this move" prompt={() => moveQuestion(game, pgn, review, ply)} />
+              )}
+              <AskClaude
+                label="Ask Claude to coach this game"
+                prompt={() => gameSummaryQuestion(game, pgn, review, userColor(game.headers, username)?.[0] as 'w' | 'b' | undefined ?? null)}
+              />
             </div>
           </div>
         ) : (

@@ -55,3 +55,9 @@ test('final checkmate position counts as mate for the mover', () => {
   assert.equal(r.evals[1].mate, 1)
   assert.equal(r.moves[0].label, 'best')
 })
+
+test('cleanPgn strips clocks and keeps key headers', async () => {
+  const { cleanPgn } = await import('./pgn.ts')
+  const pgn = `[Event "Live Chess"]\n[Site "Chess.com"]\n[White "A"]\n[Black "B"]\n\n1. e4 {[%clk 0:09:58.1]} 1... e5 {[%clk 0:09:57]} 2. Nf3 1-0`
+  assert.equal(cleanPgn(pgn), '[Event "Live Chess"]\n[White "A"]\n[Black "B"]\n\n1. e4 e5 2. Nf3 1-0')
+})
