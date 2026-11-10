@@ -8,7 +8,7 @@ A personal web app for reviewing your chess.com games: import, replay, engine re
 - [x] Phase 2: Stockfish game review (move labels, accuracy, eval bar and graph)
 - [x] Phase 3: puzzles from your own mistakes (with spaced repetition and batch analysis of a month of games)
 - [x] Phase 4: AI tutor explanations ("Ask Claude" buttons that open Claude with the engine findings, using your own Claude plan)
-- [ ] Phase 5: progress and pattern dashboard
+- [x] Phase 5: progress dashboard (accuracy over time, results, errors by game phase, openings, what to work on)
 
 ## Use it
 

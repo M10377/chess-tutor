@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { GameList } from './components/GameList'
+import { Progress } from './components/Progress'
 import { Puzzles } from './components/Puzzles'
 import { Replay } from './components/Replay'
 import type { ChessComGame } from './lib/chesscom'
@@ -16,7 +17,7 @@ function loadUsername(): string {
   }
 }
 
-type Tab = 'games' | 'puzzles'
+type Tab = 'games' | 'puzzles' | 'progress'
 
 export interface OpenGame {
   game: ParsedGame
@@ -74,6 +75,9 @@ export default function App() {
       <button className={tab === 'puzzles' && !open ? 'on' : ''} onClick={() => { setOpen(null); setTab('puzzles') }}>
         Puzzles{due > 0 && <span className="count">{due}</span>}
       </button>
+      <button className={tab === 'progress' && !open ? 'on' : ''} onClick={() => { setOpen(null); setTab('progress') }}>
+        Progress
+      </button>
     </nav>
   )
 
@@ -89,6 +93,23 @@ export default function App() {
           username={username}
           orientation={userColor(open.game.headers, username) ?? 'white'}
           onBack={() => setOpen(null)}
+        />
+      </main>
+    )
+  }
+
+  if (tab === 'progress') {
+    return (
+      <main>
+        {nav}
+        <Progress
+          onOpen={(g) => {
+            try {
+              setOpen({ game: parsePgn(g.pgn), pgn: g.pgn, meta: { time: g.time, timeClass: g.timeClass ?? undefined } })
+            } catch {
+              alert('Could not open this game.')
+            }
+          }}
         />
       </main>
     )

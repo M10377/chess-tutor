@@ -125,3 +125,31 @@ strong.best { color: var(--best); }
 .puzzle-msg.wrong { color: var(--blunder); }
 .puzzle-msg.checking { color: var(--muted); }
 .ask-claude { display: inline-flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+
+/* Phase 5: progress */
+.progress-page { max-width: 760px; }
+.progress-page h3 { margin: 24px 0 6px; font-size: 1.05rem; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+.tile { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.tile .big { font-size: 1.6rem; font-weight: 700; }
+.up { color: var(--win); }
+.down { color: var(--loss); }
+.acc-chart { width: 100%; height: auto; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; }
+.acc-chart .grid { stroke: var(--border); stroke-width: 1; }
+.acc-chart .tick { fill: var(--muted); font-size: 11px; }
+.acc-chart .trend { fill: none; stroke: var(--accent); stroke-width: 2.5; }
+.acc-chart .pt { fill: var(--draw); stroke: var(--panel); stroke-width: 1.5; cursor: pointer; }
+.acc-chart .pt.win { fill: var(--win); }
+.acc-chart .pt.loss { fill: var(--loss); }
+.phases { display: grid; gap: 6px; }
+.phase-row { display: grid; grid-template-columns: 100px 1fr 40px; align-items: center; gap: 8px; }
+.phase-bar { height: 14px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.phase-bar span { display: block; height: 100%; background: var(--mistake); border-radius: 4px; }
+.phase-val { text-align: right; font-variant-numeric: tabular-nums; }
+.tips { padding-left: 20px; }
+.tips li { margin: 4px 0; }
+.table-wrap { overflow-x: auto; }
+.openings { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.openings th, .openings td { padding: 5px 8px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+.openings th:first-child, .openings td:first-child { text-align: left; white-space: normal; }
+.openings th:nth-child(2), .openings td:nth-child(2) { text-align: left; }
