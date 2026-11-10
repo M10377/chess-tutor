@@ -73,3 +73,39 @@ input, textarea, select {
 .num { color: var(--muted); text-align: right; padding-right: 8px; font-size: 0.9rem; }
 .move { border: none; background: none; text-align: left; padding: 3px 8px; border-radius: 4px; }
 .move.active { background: var(--active); font-weight: 600; }
+
+/* Phase 2: engine review */
+:root { --inaccuracy: #d4a017; --mistake: #e07b22; --blunder: #c8352b; --best: #3f8f4f; }
+.board-row { display: flex; gap: 8px; align-items: stretch; }
+.board-row .board { flex: 1; min-width: 0; }
+.eval-bar {
+  width: 22px; flex: none; position: relative; background: #3a3a38; border-radius: 4px; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.eval-bar.flipped { flex-direction: column-reverse; }
+.eval-white { background: #f2f1ec; transition: height 0.2s; }
+.eval-label { position: absolute; left: 0; right: 0; text-align: center; font-size: 10px; font-weight: 700; }
+.eval-bar .eval-label.on-white { bottom: 4px; color: #333; }
+.eval-bar .eval-label.on-black { top: 4px; color: #eee; }
+.eval-bar.flipped .eval-label.on-white { bottom: auto; top: 4px; }
+.eval-bar.flipped .eval-label.on-black { top: auto; bottom: 4px; }
+button.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; padding: 8px 16px; }
+.review-start { margin: 12px 0; }
+.progress { height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.progress div { height: 100%; background: var(--accent); transition: width 0.2s; }
+.summary { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.9rem; }
+.summary th, .summary td { padding: 3px 6px; text-align: right; }
+.summary th:first-child, .summary td:first-child { text-align: left; }
+.summary th { font-weight: 600; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.summary .acc { font-weight: 700; font-size: 1.05rem; }
+.sym { font-weight: 700; }
+.sym.inaccuracy, .move.inaccuracy, strong.inaccuracy { color: var(--inaccuracy); }
+.sym.mistake, .move.mistake, strong.mistake { color: var(--mistake); }
+.sym.blunder, .move.blunder, strong.blunder { color: var(--blunder); }
+strong.best { color: var(--best); }
+.eval-graph { width: 100%; height: auto; display: block; border-radius: 4px; cursor: pointer; margin: 6px 0; }
+.graph-black { fill: #3a3a38; }
+.graph-white { fill: #f2f1ec; }
+.graph-mid { stroke: #888; stroke-width: 1; stroke-dasharray: 4 4; }
+.graph-cursor { stroke: var(--accent); stroke-width: 2; }
+.move-verdict { padding: 6px 0; min-height: 3em; }
