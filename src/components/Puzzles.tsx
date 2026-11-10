@@ -3,7 +3,9 @@ import { useMemo, useState } from 'react'
 import { Chessboard } from 'react-chessboard'
 import { winPercent, whiteCp } from '../lib/review'
 import { listPuzzles, savePuzzles, schedule, type Puzzle } from '../lib/store'
+import { puzzleQuestion } from '../lib/tutor'
 import { getEngine } from '../lib/useReview'
+import { AskClaude } from './AskClaude'
 
 type Status = 'solving' | 'checking' | 'correct' | 'wrong' | 'revealed'
 
@@ -230,6 +232,9 @@ export function Puzzles() {
           {(status === 'solving' || status === 'wrong') && <button onClick={reveal}>Show answer</button>}
           {(status === 'correct' || status === 'revealed') && (
             <button className="primary" onClick={next}>{index + 1 < sessionIds!.length ? 'Next puzzle' : 'Finish'}</button>
+          )}
+          {(status === 'correct' || status === 'revealed') && (
+            <AskClaude label="Ask Claude why" prompt={() => puzzleQuestion(puzzle)} />
           )}
         </div>
         <p className="muted small">Drag a piece, or tap it and then tap where it should go.</p>
