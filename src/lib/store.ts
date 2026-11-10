@@ -149,7 +149,7 @@ function openingName(h: Record<string, string>): string | null {
   if (fromUrl) {
     // chess.com: "Sicilian-Defense-Old-Sicilian-2...Nc6" -> "Sicilian Defense Old Sicilian"
     const words = fromUrl.split('-').filter((w) => /^[A-Za-z']+$/.test(w))
-    return words.slice(0, 4).join(' ') || null
+    return words.slice(0, 6).join(' ') || null
   }
   return h.Opening ?? null
 }
