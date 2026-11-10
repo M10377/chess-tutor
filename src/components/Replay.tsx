@@ -19,17 +19,20 @@ const LABEL_TEXT: Record<MoveLabel, string> = {
 
 interface Props {
   game: ParsedGame
+  pgn: string
+  username: string
+  meta?: { time?: number; timeClass?: string }
   orientation: 'white' | 'black'
   onBack: () => void
 }
 
-export function Replay({ game, orientation: initialOrientation, onBack }: Props) {
+export function Replay({ game, pgn, username, meta, orientation: initialOrientation, onBack }: Props) {
   // ply = number of half-moves played; 0 = start position.
   const [ply, setPly] = useState(0)
   const [orientation, setOrientation] = useState(initialOrientation)
   const last = game.moves.length
   const activeRef = useRef<HTMLButtonElement | null>(null)
-  const { review, progress, error, start } = useReview(game)
+  const { review, progress, error, start } = useReview(game, pgn, username, meta)
 
   const go = useCallback((p: number) => setPly(Math.max(0, Math.min(last, p))), [last])
 

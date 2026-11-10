@@ -109,3 +109,18 @@ strong.best { color: var(--best); }
 .graph-mid { stroke: #888; stroke-width: 1; stroke-dasharray: 4 4; }
 .graph-cursor { stroke: var(--accent); stroke-width: 2; }
 .move-verdict { padding: 6px 0; min-height: 3em; }
+
+/* Phase 3: navigation, batch analysis, puzzles */
+.tabs { display: flex; gap: 4px; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.tabs .brand { font-weight: 700; font-size: 1.15rem; margin-right: 12px; }
+.tabs button { border: none; background: none; padding: 6px 10px; border-radius: 6px; }
+.tabs button.on { background: var(--active); font-weight: 600; }
+.tabs .count { background: var(--blunder); color: #fff; border-radius: 10px; font-size: 0.75rem; padding: 1px 7px; margin-left: 6px; }
+.batch { margin: 8px 0 12px; }
+.reviewed { color: var(--best); font-weight: 700; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.puzzles-home { max-width: 560px; }
+.puzzle-msg { font-weight: 600; }
+.puzzle-msg.correct { color: var(--best); }
+.puzzle-msg.wrong { color: var(--blunder); }
+.puzzle-msg.checking { color: var(--muted); }

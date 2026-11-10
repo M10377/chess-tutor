@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { GameList } from './components/GameList'
+import { Puzzles } from './components/Puzzles'
 import { Replay } from './components/Replay'
 import type { ChessComGame } from './lib/chesscom'
 import { parsePgn, userColor, type ParsedGame } from './lib/game'
+import { listPuzzles } from './lib/store'
 
 const USERNAME_KEY = 'chess-tutor:username'
 
@@ -14,10 +16,19 @@ function loadUsername(): string {
   }
 }
 
+type Tab = 'games' | 'puzzles'
+
+export interface OpenGame {
+  game: ParsedGame
+  pgn: string
+  meta?: { time?: number; timeClass?: string }
+}
+
 export default function App() {
   const [username, setUsername] = useState(loadUsername)
   const [draft, setDraft] = useState(username)
-  const [game, setGame] = useState<ParsedGame | null>(null)
+  const [tab, setTab] = useState<Tab>('games')
+  const [open, setOpen] = useState<OpenGame | null>(null)
   const [pgnText, setPgnText] = useState('')
   const [pgnError, setPgnError] = useState<string | null>(null)
 
@@ -34,7 +45,7 @@ export default function App() {
 
   const openChessCom = (g: ChessComGame) => {
     try {
-      setGame(parsePgn(g.pgn))
+      setOpen({ game: parsePgn(g.pgn), pgn: g.pgn, meta: { time: g.end_time * 1000, timeClass: g.time_class } })
     } catch {
       alert('Could not read this game.')
     }
@@ -42,31 +53,60 @@ export default function App() {
 
   const openPasted = () => {
     try {
-      setGame(parsePgn(pgnText))
+      setOpen({ game: parsePgn(pgnText), pgn: pgnText })
       setPgnError(null)
     } catch {
       setPgnError("That doesn't look like a valid PGN.")
     }
   }
 
-  if (game) {
+  const due = (() => {
+    const now = Date.now()
+    return listPuzzles().filter((p) => p.due <= now).length
+  })()
+
+  const nav = (
+    <nav className="tabs">
+      <span className="brand">Chess Tutor</span>
+      <button className={tab === 'games' && !open ? 'on' : ''} onClick={() => { setOpen(null); setTab('games') }}>
+        Games
+      </button>
+      <button className={tab === 'puzzles' && !open ? 'on' : ''} onClick={() => { setOpen(null); setTab('puzzles') }}>
+        Puzzles{due > 0 && <span className="count">{due}</span>}
+      </button>
+    </nav>
+  )
+
+  if (open) {
     return (
       <main>
+        {nav}
         <Replay
-          game={game}
-          orientation={userColor(game.headers, username) ?? 'white'}
-          onBack={() => setGame(null)}
+          key={open.pgn}
+          game={open.game}
+          pgn={open.pgn}
+          meta={open.meta}
+          username={username}
+          orientation={userColor(open.game.headers, username) ?? 'white'}
+          onBack={() => setOpen(null)}
         />
+      </main>
+    )
+  }
+
+  if (tab === 'puzzles') {
+    return (
+      <main>
+        {nav}
+        <Puzzles />
       </main>
     )
   }
 
   return (
     <main>
-      <header>
-        <h1>Chess Tutor</h1>
-        <p className="muted">Review your chess.com games.</p>
-      </header>
+      {nav}
+      <p className="muted">Review your chess.com games.</p>
 
       <form className="username" onSubmit={saveUsername}>
         <input
