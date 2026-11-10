@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { archiveLabel, fetchArchive, fetchArchives, type ChessComGame } from '../lib/chesscom'
+import { parsePgn } from '../lib/game'
+import { gameKey, listSummaries } from '../lib/store'
+import { analyzeGame } from '../lib/useReview'
 
 interface Props {
   username: string
@@ -21,6 +24,51 @@ export function GameList({ username, onOpen }: Props) {
   const [games, setGames] = useState<ChessComGame[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [reviewed, setReviewed] = useState(() => new Set(listSummaries().map((s) => s.key)))
+  const [batch, setBatch] = useState<{ done: number; total: number; fraction: number } | null>(null)
+  const stopRef = useRef(false)
+  const keys = useMemo(() => {
+    const m = new Map<string, string>()
+    for (const g of games) {
+      try {
+        m.set(g.url, gameKey(parsePgn(g.pgn)))
+      } catch {
+        m.set(g.url, '')
+      }
+    }
+    return m
+  }, [games])
+  const keyOf = (g: ChessComGame) => keys.get(g.url) ?? ''
+
+  const analyzeAll = async () => {
+    const todo = games.filter((g) => !reviewed.has(keyOf(g)))
+    stopRef.current = false
+    for (let i = 0; i < todo.length; i++) {
+      if (stopRef.current) break
+      setBatch({ done: i, total: todo.length, fraction: 0 })
+      const g = todo[i]
+      let parsed
+      try {
+        parsed = parsePgn(g.pgn)
+      } catch {
+        continue
+      }
+      const r = await analyzeGame(
+        parsed,
+        g.pgn,
+        username,
+        (f) => setBatch({ done: i, total: todo.length, fraction: f }),
+        () => stopRef.current,
+        { time: g.end_time * 1000, timeClass: g.time_class },
+      )
+      if (r) setReviewed((prev) => new Set(prev).add(gameKey(parsed)))
+    }
+    setBatch(null)
+  }
+
+  useEffect(() => () => {
+    stopRef.current = true
+  }, [])
 
   useEffect(() => {
     let cancelled = false
@@ -77,6 +125,26 @@ export function GameList({ username, onOpen }: Props) {
           </select>
         </label>
       )}
+      {!loading && games.length > 0 && (
+        <div className="batch">
+          {batch ? (
+            <>
+              <div className="progress"><div style={{ width: `${((batch.done + batch.fraction) / batch.total) * 100}%` }} /></div>
+              <p className="muted small">
+                Analyzing game {batch.done + 1} of {batch.total}… Puzzles from your mistakes are added as each game finishes.{' '}
+                <button className="link" onClick={() => (stopRef.current = true)}>Stop</button>
+              </p>
+            </>
+          ) : (() => {
+            const left = games.filter((g) => !reviewed.has(keyOf(g))).length
+            return left > 0 ? (
+              <button onClick={analyzeAll}>Analyze all {left} unreviewed games this month</button>
+            ) : (
+              <p className="muted small">All games this month are reviewed.</p>
+            )
+          })()}
+        </div>
+      )}
       {loading && <p className="muted">Loading games…</p>}
       {!loading && archives.length === 0 && <p className="muted">No games found for {username}.</p>}
       {!loading && archives.length > 0 && games.length === 0 && <p className="muted">No standard games this month.</p>}
@@ -93,6 +161,7 @@ export function GameList({ username, onOpen }: Props) {
                 <span className="opp">
                   vs {opp.username} <span className="muted">({opp.rating})</span>
                 </span>
+                {reviewed.has(keyOf(g)) && <span className="reviewed" title="Reviewed">✓</span>}
                 <span className="muted small">
                   {iAmWhite ? 'White' : 'Black'} · {g.time_class} ·{' '}
                   {new Date(g.end_time * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}

@@ -1,36 +1,17 @@
 import { Chess } from 'chess.js'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Engine, type EngineEval } from './engine'
 import type { ParsedGame } from './game'
 import { buildReview, type GameReview } from './review'
+import { gameKey, loadEvals, recordReview, saveEvals } from './store'
 
 export const REVIEW_DEPTH = 16
-const CACHE_PREFIX = `chess-tutor:review:d${REVIEW_DEPTH}:`
 
-function cacheKey(game: ParsedGame): string {
-  // Cheap stable hash of the move sequence + start position.
-  const s = game.fens[0] + game.moves.map((m) => m.lan).join(' ')
-  let h = 0
-  for (let i = 0; i < s.length; i++) h = (Math.imul(31, h) + s.charCodeAt(i)) | 0
-  return CACHE_PREFIX + (h >>> 0).toString(36) + ':' + game.moves.length
-}
-
-function loadCached(key: string): EngineEval[] | null {
-  try {
-    const raw = localStorage.getItem(key)
-    return raw ? (JSON.parse(raw) as EngineEval[]) : null
-  } catch {
-    return null
-  }
-}
-
-function saveCached(key: string, evals: EngineEval[]) {
-  try {
-    // Keep only what the review needs; pv trimmed to save space.
-    localStorage.setItem(key, JSON.stringify(evals.map((e) => ({ ...e, pv: e.pv.slice(0, 8) }))))
-  } catch {
-    /* storage full or unavailable: review still works, just not cached */
-  }
+let shared: Engine | null = null
+/** One engine (one Web Worker) for the whole app; its searches are queued. */
+export function getEngine(): Engine {
+  shared ??= new Engine()
+  return shared
 }
 
 export function uciToSan(fen: string, uci: string): string | undefined {
@@ -42,37 +23,56 @@ export function uciToSan(fen: string, uci: string): string | undefined {
   }
 }
 
-export function useReview(game: ParsedGame) {
-  const key = cacheKey(game)
-  const [review, setReview] = useState<GameReview | null>(() => {
-    const cached = loadCached(key)
-    return cached ? buildReview(game.moves, cached, (ply, uci) => uciToSan(game.fens[ply], uci)) : null
-  })
+export function reviewFromEvals(game: ParsedGame, evals: EngineEval[]): GameReview {
+  return buildReview(game.moves, evals, (ply, uci) => uciToSan(game.fens[ply], uci))
+}
+
+export function cachedReview(game: ParsedGame): GameReview | null {
+  const evals = loadEvals(gameKey(game), REVIEW_DEPTH)
+  return evals && evals.length === game.fens.length ? reviewFromEvals(game, evals) : null
+}
+
+/**
+ * Analyze every position of a game, cache the result, and record the game summary and puzzles.
+ * `shouldStop` is checked between positions so a batch can be cancelled.
+ */
+export async function analyzeGame(
+  game: ParsedGame,
+  pgn: string,
+  username: string,
+  onProgress?: (fraction: number) => void,
+  shouldStop?: () => boolean,
+  meta?: { time?: number; timeClass?: string },
+): Promise<GameReview | null> {
+  const engine = getEngine()
+  const evals: EngineEval[] = []
+  for (let i = 0; i < game.fens.length; i++) {
+    if (shouldStop?.()) return null
+    evals.push(await engine.evaluate(game.fens[i], REVIEW_DEPTH))
+    onProgress?.((i + 1) / game.fens.length)
+  }
+  saveEvals(gameKey(game), REVIEW_DEPTH, evals)
+  const review = reviewFromEvals(game, evals)
+  recordReview(game, pgn, review, username, meta)
+  return review
+}
+
+export function useReview(game: ParsedGame, pgn: string, username: string, meta?: { time?: number; timeClass?: string }) {
+  const [review, setReview] = useState<GameReview | null>(() => cachedReview(game))
   const [progress, setProgress] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const engineRef = useRef<Engine | null>(null)
-
-  useEffect(() => () => engineRef.current?.terminate(), [])
 
   const start = useCallback(async () => {
     setError(null)
     setProgress(0)
     try {
-      engineRef.current ??= new Engine()
-      const engine = engineRef.current
-      const evals: EngineEval[] = []
-      for (let i = 0; i < game.fens.length; i++) {
-        evals.push(await engine.evaluate(game.fens[i], REVIEW_DEPTH))
-        setProgress((i + 1) / game.fens.length)
-      }
-      saveCached(key, evals)
-      setReview(buildReview(game.moves, evals, (ply, uci) => uciToSan(game.fens[ply], uci)))
+      setReview(await analyzeGame(game, pgn, username, setProgress, undefined, meta))
     } catch (e) {
       setError(e instanceof Error ? e.message : 'The engine failed to run.')
     } finally {
       setProgress(null)
     }
-  }, [game, key])
+  }, [game, pgn, username, meta])
 
   return { review, progress, error, start }
 }
