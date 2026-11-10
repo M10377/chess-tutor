@@ -34,6 +34,7 @@ export function Replay({ game, pgn, username, meta, orientation: initialOrientat
   const [orientation, setOrientation] = useState(initialOrientation)
   const last = game.moves.length
   const activeRef = useRef<HTMLButtonElement | null>(null)
+  const movesRef = useRef<HTMLDivElement | null>(null)
   const { review, progress, error, start } = useReview(game, pgn, username, meta)
 
   const go = useCallback((p: number) => setPly(Math.max(0, Math.min(last, p))), [last])
@@ -53,7 +54,19 @@ export function Replay({ game, pgn, username, meta, orientation: initialOrientat
   }, [ply, last, go])
 
   useEffect(() => {
-    activeRef.current?.scrollIntoView({ block: 'nearest' })
+    // Keep the current move visible by scrolling only the move list, never the page,
+    // so on phones the board stays on screen while stepping through moves.
+    const box = movesRef.current
+    const el = activeRef.current
+    if (!box) return
+    if (!el) {
+      box.scrollTop = 0
+      return
+    }
+    const top = el.offsetTop
+    const bottom = top + el.offsetHeight
+    if (top < box.scrollTop) box.scrollTop = top
+    else if (bottom > box.scrollTop + box.clientHeight) box.scrollTop = bottom - box.clientHeight
   }, [ply])
 
   const lastMove = ply > 0 ? game.moves[ply - 1] : null
@@ -201,7 +214,7 @@ export function Replay({ game, pgn, username, meta, orientation: initialOrientat
             {error && <p className="error">{error}</p>}
           </div>
         )}
-        <div className="moves">
+        <div className="moves" ref={movesRef}>
           {rows.map((r) => (
             <div className="move-row" key={r.n}>
               <span className="num">{r.n}.</span>
