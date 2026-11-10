@@ -8,12 +8,14 @@ import { parsePgn, userColor, type ParsedGame } from './lib/game'
 import { listPuzzles } from './lib/store'
 
 const USERNAME_KEY = 'chess-tutor:username'
+/** The app owner's chess.com account, used until a different username is saved. */
+const DEFAULT_USERNAME = 'InternalGuess'
 
 function loadUsername(): string {
   try {
-    return localStorage.getItem(USERNAME_KEY) ?? ''
+    return localStorage.getItem(USERNAME_KEY) || DEFAULT_USERNAME
   } catch {
-    return ''
+    return DEFAULT_USERNAME
   }
 }
 
