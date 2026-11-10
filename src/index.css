@@ -66,6 +66,7 @@ input, textarea, select {
 .controls { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
 .side-col { flex: 1 1 260px; min-width: 0; }
 .moves {
+  position: relative;
   max-height: 60vh; overflow-y: auto; background: var(--panel);
   border: 1px solid var(--border); border-radius: 6px; padding: 4px 0; margin: 8px 0;
 }
