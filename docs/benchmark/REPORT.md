@@ -23,11 +23,11 @@ Research and planning only; no app code changed. Companion files in this folder:
 2. **Rated, themed tactics trainer** built on lichess CC0 puzzles, calibrated to the player's rating, sharing the hint ladder.
 3. **Tutor evaluation harness and better tutor prompts** (hint mode, "here's my idea" mode, multiple good moves), measured on fixtures T1-T6 before any spend.
 4. **Beginner fundamentals tied to the player's own mistakes** (8 to 10 short lessons with play-to-goal exercises).
-5. **Bring-your-own-key in-app tutor** (Claude or OpenAI key), grounded in Stockfish and checked by chess.js, only after (3) shows it beats the copy button. Cost is roughly **$0.001 (Haiku 5.5) to $0.03 (Opus 5.5) per explanation**. The main risk is the key sitting in browser storage on the shared `m10377.github.io` origin. Details in `roadmap.md` § X1.
+5. **AI tutor at $0 (Micah's revised spec, 2026-11-14).** Built-in explanations and graduated hints from Stockfish, legal-move checks and motif detection (Path 1) already pass every automatic check on all 32 tutor tasks in a prototype, in under 10 ms each. They are paired with a one-click, board-aware handoff to Micah's own Claude or ChatGPT chat (Path 3). A local model on Micah's M4 Mac (Path 2) is optional, measured in `deep-dives.md` § 3.6. A paid API key is optional and comes later; it would cost about $0.001 to $0.03 per explanation and carries a key-in-browser risk (`roadmap.md`).
 
 **Advantages to build on**: zero running cost, no paywall, data stays local, engine already in the browser, Claude integration already grounded in engine facts, and a codebase small enough (about 2,000 lines) to change quickly.
 
-**What would change these conclusions.** If the audience were club players (1600+), opening repertoire training (Chessable-style SRS), multi-threaded deeper analysis and rook-endgame practice would move up and beginner lessons would drop. If the app were for many users, accounts/sync, onboarding and placement, localization, accessibility and content licensing would become near-term. If Micah prefers to learn from a coach-like conversation over drills, the BYOK tutor (X1) moves to near-term, behind the eval harness.
+**What would change these conclusions.** If the audience were club players (1600+), opening repertoire training (Chessable-style SRS), multi-threaded deeper analysis and rook-endgame practice would move up and beginner lessons would drop. If the app were for many users, accounts/sync, onboarding and placement, localization, accessibility and content licensing would become near-term. If Micah prefers to learn from a coach-like conversation over drills, the chat handoff and the optional local model move up and the rated puzzles (N2) move down.
 
 ## 2. Benchmark matrix
 
@@ -46,11 +46,11 @@ Research and planning only; no app code changed. Companion files in this folder:
 | Beginner fundamentals | B | Learn by doing, short, free, tied to real positions | lichess /learn + /practice (free); Duolingo Chess (free) | Interactive, play-to-goal | H (lichess), D (Duolingo) | None | Total | 8-10 lessons triggered by own mistakes; link to lichess for rules | X |
 | Endgame practice | B,I | Play the position to a goal vs perfect defence | lichess /practice (free) | Engine sparring | H | None | Total | E1-E4 playable, tablebase-validated | X |
 | Opening recall | I,C | SRS drill of my own lines | Chessable MoveTrainer (PRO $80/yr) | Mature SRS | T | None | Total | Defer; later from own games | L |
-| AI tutor: explain a move | All | Correct, grounded, plain, ends with a practice step | evidence gap; chess.com Coach (Diamond) documented; Chessy/Chessigma (prov.) | Grounded per-move text | D/T | Copy-to-Claude prompt with FEN, evals, best line, grounding rule | Leaves app; no validation | In-app answer with legality and engine checks | X |
+| AI tutor: explain a move | All | Correct, grounded, plain, ends with a practice step | evidence gap; chess.com Coach (Diamond) documented; Chessy/Chessigma (prov.) | Grounded per-move text | D/T | Copy-to-Claude prompt with FEN, evals, best line, grounding rule | Leaves app; no validation | In-app Path 1 explanation (checked) + handoff | N |
 | AI tutor: hint | All | No spoiler, graduated | evidence gap | | I | 100% of tutor prompts contain the answer | Total | Hint-mode prompt + engine hint ladder | N |
 | AI tutor: critique my idea | All | Responds to the learner's proposed move and reasoning | evidence gap | | I | Not possible (view-only board) | Total | Analysis board + "my idea" prompt with engine refutation | N/X |
-| AI tutor: follow-up after change | All | Uses the new position | evidence gap | | I | Not possible | Total | FEN-aware follow-ups (BYOK) | X |
-| AI tutor: claim accuracy | All | Every concrete claim legal and engine-confirmed | Engine-grounded tools (ACT-Eval 2026: ungrounded GPT-5.4 wrong on 22% of sub-claims) | Tool use reduces errors | T (paper abstract) | Grounded prompt, no checks | No verification | Auto-check every SAN in tutor output | X |
+| AI tutor: follow-up after change | All | Uses the new position | evidence gap | | I | Not possible | Total | Path 1 critique from the analysis board (X1) + handoff with the new FEN | X |
+| AI tutor: claim accuracy | All | Every concrete claim legal and engine-confirmed | Engine-grounded tools (ACT-Eval 2026: ungrounded GPT-5.4 wrong on 22% of sub-claims) | Tool use reduces errors | T (paper abstract) | Grounded prompt, no checks | No verification | Path 1 correct by construction; check any model output | N |
 | Skill diagnosis | I | Weakest areas vs peers | Aimchess (1 report/mo free) | 6 areas incl. time management | D | Errors by phase, openings | No motifs, no clock | Motif tags + time use from %clk | X |
 | Progress tracking | All | Trend that reflects skill | lichess dashboard (free); chess.com Insights (Diamond) | Theme accuracy, history | D | Accuracy trend, blunders/game, phases | No puzzle rating/theme stats | Puzzle rating + theme accuracy | X |
 | Analysis board | All | Try any move, see engine lines | lichess (free) | Instant, MultiPV | H | View-only replay | Total | Interactive board in review | N |
@@ -58,7 +58,7 @@ Research and planning only; no app code changed. Companion files in this folder:
 | Accessibility | All | Screen reader and keyboard move entry | lichess blind mode (free) | Purpose-built | H (visible) / D | Keyboard stepping only; 0/64 squares labelled | Large | Keyboard + labelled squares for puzzles | L |
 | Data safety / sync | All | Never lose progress | Account-based sites | Server storage | I | localStorage only | No backup | Export/import file | X |
 | Offline | All | Train without network | Chessable app (I) | Native app | I | Engine local, no PWA | No install | PWA cache | L |
-| Cost to run | All | $0 or user-controlled | Us, lichess | Client-side engine | H | $0 | none | Keep; BYOK optional | - |
+| Cost to run | All | $0 or user-controlled | Us, lichess | Client-side engine | H | $0 | none | Keep $0; paid key optional later (L1) | - |
 
 ## 3. Opportunity ranking
 
@@ -71,7 +71,8 @@ Scores 1-5 (5 best). Effort is inverted (5 = smallest). Weights: learner impact 
 | 3 | Tutor eval harness + hint/"my idea"/multi-move prompts | 3 | 5 | 4 | 3 | 5 | **3.95** |
 | 4 | Beginner fundamentals tied to own mistakes | 4 | 5 | 4 | 3 | 2 | 3.80 |
 | 5 | Interactive analysis board + MultiPV | 3 | 4 | 2 | 5 | 4 | 3.55 |
-| 6 | BYOK in-app grounded tutor | 4 | 4 | 5 | 2 | 2 | 3.55 |
+| 6 | Optional local-model "Explain more" (Mac only) | 3 | 3 | 4 | 3 | 4 | 3.30 |
+| - | Paid BYOK provider (later, optional) | 4 | 2 | 5 | 2 | 2 | 3.05 |
 | 7 | Mistake motif tags + time-use insights | 3 | 4 | 4 | 3 | 3 | 3.40 |
 | 8 | Onboarding + daily training queue | 3 | 4 | 2 | 3 | 5 | 3.40 |
 | 9 | Backup/export | 2 | 4 | 1 | 5 | 5 | 3.25 |
@@ -81,7 +82,7 @@ Scores 1-5 (5 best). Effort is inverted (5 = smallest). Weights: learner impact 
 **Tradeoffs behind the top three.**
 
 - **Why mistake review before more puzzles.** Rated puzzles (#2) have equal impact and better evidence, but lichess already gives them away; building them makes us a convenience, not a leader. Guided review is where the paid benchmark is locked behind Diamond and where our engine and own-game data give a real edge. It also builds the hint ladder and multi-move validation that #2 reuses, so doing #1 first makes #2 cheaper.
-- **Why an eval harness before BYOK.** Micah asked for the API-key option and it is technically easy, but the one rigorous study found (paper abstract) that even top models make wrong chess claims about one time in five without tools. Spending money on unmeasured explanations would be guessing. The harness costs almost nothing, improves the free copy button right away, and gives the go/no-go numbers for BYOK.
+- **Why built-in explanations before any model.** One study (ACT-Eval, 2026, abstract) found that even a top model, used without tools, made wrong chess claims about one time in five. Our rule-based prototype is correct by construction. On 32 tasks it named 0 unsupported moves and gave 0 hint spoilers. My teaching-quality rating has a median of 2 out of 3, and it answers in milliseconds, offline and on the phone. Models add better prose and conversation. The handoff gets that for $0. The local model has to prove itself on the same tasks first, and a paid key is not needed for the first release.
 - **Why not lessons first.** Beginner lessons fit the player best, but they need authored, verified content (the most expensive kind of work here), and lichess's free lessons already cover rules and basic motifs. We build only lessons that the player's own mistakes call for, after we can tag those mistakes (#7).
 
 ## Competitive advantages we claim, and how we would verify them
