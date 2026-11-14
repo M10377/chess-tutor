@@ -102,4 +102,23 @@ Settings, stored locally:
 
 ## 3.6 Tutor path results on the 32 tasks
 
-Filled in from `results/rule-tutor-normal.json` and `results/local-llm/*.json` (see `roadmap.md` § Tutor decision for the recommendation and its numbers).
+Same 32 tasks, same automatic checks. Path 1 ran in the cloud and on Micah's Mac; Path 2 ran on Micah's Mac (Apple M4, 24 GB, macOS 15.7.4, Ollama 0.40.16). Path 3 answers need Micah's own logins and are not measured (manual check 5 in `tests.md`).
+
+| Measure | Path 1 rules (no model) | Path 2 qwen3:4b, Normal | Path 3 chat handoff |
+|---|---|---|---|
+| Tasks completed | 32/32 | 32/32 | not measured |
+| Answers naming a move not backed by the engine or legal in the position | 0/32 | 2/32 real (P3 Bc1; E4 five moves that do not exist in that endgame) + 1 scorer false positive (T5 quoted the earlier moves) | not checkable by the app |
+| Hint level-1 spoilers (9 hint tasks) | 0/9 | **9/9 full spoilers** | prompt asks for no spoiler; unverified |
+| T4 illegal move + false premise | Correct (illegal, material level) | Correct | unverified |
+| T6 knight-vs-king draw | Mentions draw at both levels | Mentions draw at both levels | unverified |
+| Time to first word | under 10 ms (whole answer) | median 1.0 s | seconds plus switching apps |
+| Time to full answer | max 5 ms | **median 137 s, p90 176 s, max 208 s** | seconds |
+| Answer length | median about 40 words | **median 2,555 words** (model writes its reasoning into the answer; `think:false` ignored) | set by depth instruction |
+| Teaching quality (my 0-3 rating, single rater) | median 2, mean 2.31 | not rated (answers are mostly visible reasoning; it opened the P1 hint by misreading the FEN) | not rated |
+| Memory on the Mac | ~0 | 2.9 GB model; Mac at 29-39% free, ~8 of 9 GB swap in use | 0 |
+| Works on phone | yes | no (runs on the Mac) | yes |
+| Setup | none | install Ollama, download 2.5-3.4 GB, set CORS variable | none |
+
+**Incomplete**: the fairer Path 2 reruns (qwen3:4b with reasoning switched off by prompt, and gemma3:4b, which answers directly) were started overnight, but the Mac went offline around 08:09 UTC before reporting. The qwen3:8b run was skipped for memory. So Path 2 is **not yet a fair test of a well-configured local model**; it is a measured failure of one configuration. The full qwen3 file stays on the Mac (`results/local-llm/qwen3_4b-normal-summary.json` has the numbers).
+
+**What would change the decision**: if gemma3:4b or qwen3:4b with reasoning off answers in under 8 s with no spoilers and no unsupported moves on 29+/32 tasks, Path 2 becomes a reasonable opt-in "Explain more" on the Mac (roadmap X5). It still would not work on the phone, and it still could not beat Path 1 on correctness, so the first-release recommendation does not depend on it.

@@ -29,6 +29,6 @@ node docs/benchmark/tools/local-llm-eval.mjs --model qwen3:4b --depth normal
 
 ## Resume notes for a fresh session
 
-- Status, 2026-11-14: baseline, inventory, competitor research, fixtures, Path 1 tutor results, roadmap and first slice are done. Path 2 (local model) is waiting on Micah installing Ollama on the Mac (permission rules there block an automated install). When results arrive in `results/local-llm/`, fill in `deep-dives.md` § 3.6 and confirm or change the tutor decision in `roadmap.md`.
+- Status, 2026-11-14: baseline, inventory, competitor research, fixtures, Path 1 tutor results, roadmap and first slice are done. Path 2 (local model): qwen3:4b measured on Micah's M4 (too slow, spoils hints); the reruns with reasoning off and with gemma3:4b were started but not reported before the Mac went offline. Ollama, qwen3:4b, qwen3:8b and gemma3:4b are installed on the Mac; the bench copy is `~/Developer/chess-tutor-bench`. To finish: run `node docs/benchmark/tools/local-llm-eval.mjs --model gemma3:4b --depth normal` and `--model qwen3:4b --depth normal --no-think` there, then update `deep-dives.md` § 3.6.
 - Micah's tutor rules (2026-11-14): first usable version costs $0; no paid API or hosted backend in the first release; Micah controls explanation depth and hint spoilers; always offer a Claude/ChatGPT handoff; a useful explanation must exist with no model at all.
 - The next step after this research is `first-slice.md`, implemented in a separate pass.

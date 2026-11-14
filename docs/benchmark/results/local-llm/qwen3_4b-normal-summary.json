@@ -1,0 +1,27 @@
+{
+  "note": "Summary transcribed from the remote session on Micah's Mac (2026-11-14 about 07:00 UTC). The full results file (467 KB, about 80,000 words of answers) stays on the Mac at ~/Developer/chess-tutor-bench/docs/benchmark/results/local-llm/qwen3_4b-normal.json and was not copied into the repo.",
+  "model": "qwen3:4b",
+  "runtime": "Ollama 0.40.16 (Homebrew service)",
+  "machine": { "chip": "Apple M4", "memGB": 24, "os": "macOS 15.7.4" },
+  "depth": "normal",
+  "think": "think:false sent, ignored by the model/runtime: reasoning written into the answer text",
+  "tasks": 32,
+  "errors": 0,
+  "loadMs": 1300,
+  "ttftMs": { "median": 1000, "p90": 1200 },
+  "totalMs": { "median": 137000, "p90": 176000, "max": 208000 },
+  "tokensPerSec": { "median": 30, "note": "under memory pressure" },
+  "wordsPerAnswer": { "median": 2555 },
+  "hintSpoilers": { "full": 9, "of": 9 },
+  "answersWithUnsupportedMoves": { "count": 3, "examples": { "P3-explain": ["Bc1"], "E4-explain": ["Rc8", "Nf3", "Nc6", "Nxe5", "Nxe4"], "T5-followup": ["Nxe5", "Qg5"] }, "note": "T5's Nxe5/Qg5 were the moves that led to the position (from the context sentence), so that hit is a scorer false positive; P3 and E4 are real" },
+  "T4": { "saysIllegal": true, "correctsMaterial": true },
+  "T6": { "mentionsDraw": "both levels", "overclaimsWin": false },
+  "observedErrors": ["P1 hint opens by misreading the FEN ('2r2k2 means: 2 white rooks? No...')"],
+  "memory": "29-39% free, about 10 GB compressed, about 8 of 9 GB swap in use; Mac stayed responsive",
+  "notRun": {
+    "qwen3:4b --no-think": "started; Mac went offline about 08:09 UTC before results were reported",
+    "gemma3:4b normal": "model pulled (3.4 GB); run not reported",
+    "qwen3:4b short": "skipped",
+    "qwen3:8b normal": "skipped (memory)"
+  }
+}

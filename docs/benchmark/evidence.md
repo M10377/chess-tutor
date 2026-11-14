@@ -25,6 +25,7 @@ Type: **H** hands-on, **D** vendor documentation/pricing, **T** third-party arti
 | S17 | Claude API prices | claude-api skill model table (cached 2026-11-03) | D | API | Opus 5.5 $4/$20, Sonnet 5.5 $2/$10, Haiku 5.5 $0.10/$0.50 per M tokens | OpenAI prices not checked |
 | S18 | Micah's chess.com profile | api.chess.com/pub/player/internalguess/stats and /games/archives | A | Public API | Rapid 958 (13-5-0), tactics 400-766, one archive (2026-11) | Snapshot |
 | S19 | Our app | m10377.github.io/chess-tutor, repo at 4ec859e | H | Web, Chromium | See `baseline.md`, `results/app-hands-on.json` | Cloud browser, not Micah's |
+| S21 | Micah's Mac (Path 2, qwen3:4b) | Remote session, 2026-11-14 ~07:00 UTC | H | Apple M4, Ollama 0.40.16 | Median 137 s per answer, 9/9 hint spoilers, `results/local-llm/qwen3_4b-normal-summary.json` | Full answers stay on the Mac |
 | S20 | Micah's Mac (Path 1 run) | Remote session, 2026-11-14 | H | Apple M4, 24 GB, macOS 15.7.4 | All 22 fixtures re-verified; G1 review 1.2 s, G2 3.5 s; 56 s for the full fixture run, ~200 MB | Ollama not installed at time of run |
 
 Not used as evidence: a Chessvia "how it works" page (chessvia-test.onrender.com) that turned out to describe a human-coach marketplace test site.
@@ -56,7 +57,7 @@ Notable observations:
 | lichess import/analysis | Cloudflare bot check on the cloud browser | Labels and "Learn from your mistakes" on G1 | `tests.md` manual check 3 |
 | lichess puzzle hint | Not observed | Whether a hint control exists for puzzles | `tests.md` manual check 4 |
 | claude.ai / chatgpt.com answers | Need Micah's logins | Path 3 answer quality on the 32 tasks; `chatgpt.com/?q=` prefill | `tests.md` manual check 5 |
-| Local model on the Mac | Ollama install blocked by Mac permission rules until Micah runs it | Path 2 latency and accuracy | Micah runs the install command; the remote session runs `local-llm-eval.mjs` |
+| Local model on the Mac | qwen3:4b measured; reruns not reported before the Mac went offline | Path 2 with reasoning off, gemma3:4b | Run the two commands in `README.md` on the Mac |
 | AI coach apps (Chessy, DecodeChess, Noctie, Chessigma Supercoach) | Paid trials/accounts | All hands-on quality | Optional: one week trial of the most relevant, run T1-T6 by hand |
 | Aimchess, Chessable, Chess Tempo | Accounts | Hands-on flows | Not needed for current roadmap |
 
