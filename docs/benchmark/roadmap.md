@@ -75,6 +75,34 @@ Why (evidence in `deep-dives.md` § 3.3 and § 3.6, `results/`):
 
 - Only if Path 2 passed the bar above. Settings: model host, model name, test button; app sends the `tutor-prompt.mjs` prompt, streams the answer, checks it with `tutor-score.mjs`, hides it and shows Path 1 if it names an unsupported move or spoils a hint. Requires `OLLAMA_ORIGINS` set. Effort 2 days. Acceptance: same bar as above inside the app; graceful fallback when Ollama is off.
 
+### X7. Opening book with plain-language explanations (added 2026-11-14 at Micah's request)
+
+- **Player problem**: Micah asked whether we could "pre-load what every move means" to avoid paying for AI. That is only possible in the opening, where games follow known paths. After the opening the number of positions explodes, and the built-in Stockfish and motif tutor (N1) takes over.
+- **Benchmark**: chess.com opening explorer (4 moves free, unlimited on Gold) and Chessable courses (paid). lichess explorer (free on the website). Exceed for our player by explaining the *idea* of each move in plain words, offline, for the lines the player actually plays.
+- **Scope**:
+  1. Name every opening position and mark "Book" moves in reviews, using the lichess opening names dataset (about 3,860 named lines with ECO code, moves and position keys).
+  2. A move tree for the first 8 to 12 moves of the main lines, starting with the openings in Micah's own games (Progress tab already lists them). Each node shows the common replies with how often they are played and how they score, and a 1-3 sentence explanation of the idea ("c3 prepares d4 so a pawn can recapture in the centre").
+  3. Leaving book in a reviewed game shows "You left book here; the usual move was X because ...", and the position becomes a recall card (ties into L3).
+  4. Past the book, explanations come from N1's built-in tutor; the chat handoff stays available.
+- **Data sources and licences (checked 2026-11-14)**:
+
+  | Source | What we use | Licence / access | OK to ship in the app? |
+  |---|---|---|---|
+  | lichess-org/chess-openings (GitHub; mirrored on Hugging Face as Lichess/chess-openings) | Opening names, ECO, move sequences, position keys | CC0 1.0 (Hugging Face dataset card) | Yes, no conditions; credit as courtesy |
+  | lichess game database (database.lichess.org) | Move frequencies and scores per opening position, computed at build time from a sample of rated games (e.g. both players 1200-2000) | CC0 | Yes; we ship only the small derived tree, not the games |
+  | Stockfish 19 (already in the app) | Engine eval of each book move, so we never call a bad move "book-good" | GPL-3 | Yes, already shipped |
+  | Explanations we write ourselves | The plain-language idea for each move, checked against the engine with `verify-fixtures.mjs` | Ours | Yes |
+  | Wikibooks "Chess Opening Theory" | Reference for authoring; optional short excerpts | CC BY-SA (shown on every page) | Only with attribution and the excerpts kept under CC BY-SA in a separate data file; prefer writing our own text and using it as a reference only |
+  | lichess opening explorer API (explorer.lichess.ovh) | Live stats | Free, but now returns 401 without a lichess login token (checked 2026-11-14) | Not for the default app; a later "connect lichess" option could use it |
+  | chess.com explorer, Chessable courses, books | none | Proprietary | No |
+
+- **Content production**: about 40 key positions for the openings Micah plays first (e.g. Italian Game as White; his replies to 1.e4 and 1.d4 as Black), then about 150 positions for the most common beginner openings. Rough cost: 5 to 10 minutes per position to write and engine-check, so about 5 hours, then about 15 hours. Each position's text lives in `public/book/*.json` with its FEN key, so it can be reviewed and corrected without touching code.
+- **Code areas**: new `scripts/build-book.mjs` (reads the CC0 names TSVs and a game sample, writes the tree), `public/book/`, `src/lib/book.ts` (lookup by position key), `Replay.tsx` and N1 key-moments (Book label, "left book" note), `Progress.tsx` (link from your openings table to the book).
+- **Dependencies**: N1 (labels and explanation card). Build-time download of one month of lichess games (several GB compressed, streamed; nothing large committed).
+- **Effort**: 3 build days plus the content hours above. Shipped data about 1-2 MB, loaded on demand.
+- **Acceptance**: every opening in Micah's last 50 games gets a name; G2 (Opera Game) shows 1.e4 e5 2.Nf3 d6 as Book and names "Philidor Defense"; every book move whose engine eval is more than 1 pawn worse than the best move is flagged rather than presented as good; every explanation passes an engine check of the moves it names; works offline.
+- **Priority**: Next. The opening is not where a 950 player loses most games (see `REPORT.md`), but naming openings and marking book moves is cheap and makes reviews friendlier. The explained tree grows with Micah's own repertoire.
+
 ### X6. Daily training queue and onboarding
 
 - First-run card explaining the 3 things the app does; a daily queue (due own puzzles, 10 rated puzzles, 1 key moment from the last game). Ethical retention: no streak shaming, no fake urgency. Effort 2 days.
@@ -83,7 +111,7 @@ Why (evidence in `deep-dives.md` § 3.3 and § 3.6, `results/`):
 
 - **L1. Bring-your-own-key provider (Claude or OpenAI), optional, off by default**, with tool use against our engine and the output checker, separate origin for key safety. Gate: N3 harness shows a teaching-quality gain over Path 1 + handoff that Micah cares about.
 - **L2. FSRS scheduling** once there are 200+ puzzle reviews to fit parameters.
-- **L3. Opening recall from own games** (detect Micah's most common lines; SRS drill; O1 style). Benchmark Chessable MoveTrainer.
+- **L3. Opening recall from own games** (detect Micah's most common lines; SRS drill; O1 style), built on the X7 opening book. Benchmark Chessable MoveTrainer.
 - **L4. Accessibility**: keyboard move entry, labelled squares, screen-reader move announcements (lichess blind mode is the benchmark).
 - **L5. PWA/offline install**, lichess game import, multi-threaded engine via a COOP/COEP service worker.
 
@@ -97,6 +125,7 @@ Bots and human-like sparring (link to lichess Maia bots), community, coach workf
 |---|---|---|
 | Puzzles | Integrate lichess CC0 data, build the trainer | Data is free and better than anything we could author |
 | Rules / first lessons | Link to lichess /learn | Free and good; not our differentiator |
+| Opening book | Integrate CC0 names + CC0 game stats, build our own explanations | No free, shippable source of explanations exists; Wikibooks text is CC BY-SA, so reference only |
 | Explanations | Build (Path 1) + integrate the user's own chat (Path 3) | $0, correct by construction, phone-friendly |
 | Local model | Integrate Ollama, optional | Free but Mac-only and needs setup |
 | Bots | Link to lichess | Large effort, no edge for us |
