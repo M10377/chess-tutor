@@ -1,0 +1,2012 @@
+{
+  "created": "2026-11-14T05:45:02.951Z",
+  "engine": "Stockfish 19 lite single, depth 18",
+  "count": 32,
+  "tasks": [
+    {
+      "id": "L1-explain",
+      "fixture": "L1",
+      "mode": "explain",
+      "level": "beginner",
+      "fen": "6k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1",
+      "question": "Why is Ra8 checkmate? Teach me the pattern.",
+      "solution": [
+        "Ra8#"
+      ],
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Ra8#"
+          ],
+          "eval": "mate in 1",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Ra7",
+            "h6",
+            "h4",
+            "f6",
+            "Kf1",
+            "Kh7",
+            "h5",
+            "Kg8"
+          ],
+          "eval": "+7.32 pawns",
+          "evalCp": 732
+        },
+        {
+          "line": [
+            "g4",
+            "f6",
+            "Ra5",
+            "h6",
+            "g5",
+            "hxg5",
+            "Kg2",
+            "Kh7"
+          ],
+          "eval": "+7.08 pawns",
+          "evalCp": 708
+        }
+      ],
+      "solutionFirst": {
+        "san": "Ra8#",
+        "from": "a1",
+        "to": "a8",
+        "piece": "r"
+      }
+    },
+    {
+      "id": "L1-transfer",
+      "fixture": "L1",
+      "mode": "critique",
+      "level": "beginner",
+      "fen": "1r4k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1",
+      "question": "Can I do the back-rank mate with Ra8 here too?",
+      "proposed": {
+        "san": "Ra8",
+        "legal": true,
+        "fenAfter": "Rr4k1/5ppp/8/8/8/8/5PPP/6K1 b - - 1 1",
+        "opponentBest": {
+          "line": [
+            "Rxa8",
+            "Kf1",
+            "Kf8",
+            "g3",
+            "h5",
+            "Kg2",
+            "h4",
+            "g4"
+          ],
+          "eval": "+6.27 pawns",
+          "evalCp": 627
+        }
+      },
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "h3",
+            "g6",
+            "Ra7",
+            "h5",
+            "Kf1",
+            "h4",
+            "g4",
+            "Kg7"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "g3",
+            "g6",
+            "Ra7",
+            "Rb4",
+            "h3",
+            "h5",
+            "Kg2",
+            "Rd4"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "h4",
+            "h5",
+            "Ra7",
+            "g6",
+            "Kh2",
+            "Rb4",
+            "f3",
+            "Rf4"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        }
+      ]
+    },
+    {
+      "id": "P1-hint",
+      "fixture": "P1",
+      "mode": "hint",
+      "level": "beginner",
+      "fen": "2r2k2/7R/p7/5p2/8/KPBb4/P4PPP/1r6 w - - 3 37",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "Rh8+",
+        "Kf7",
+        "Rxc8"
+      ],
+      "themes": "skewer endgame",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Rh8+",
+            "Kf7",
+            "Rxc8",
+            "Rc1",
+            "Rc7+",
+            "Ke6",
+            "Ba5",
+            "Rh1"
+          ],
+          "eval": "+4.45 pawns",
+          "evalCp": 445
+        },
+        {
+          "line": [
+            "Be5",
+            "Rc2",
+            "h4",
+            "Re1",
+            "f4",
+            "Ree2",
+            "Kb4",
+            "Rc6"
+          ],
+          "eval": "-4.05 pawns",
+          "evalCp": -405
+        },
+        {
+          "line": [
+            "Bf6",
+            "Rc2",
+            "h4",
+            "Rxf2",
+            "h5",
+            "Rh1",
+            "Bd4",
+            "Rxg2"
+          ],
+          "eval": "-4.28 pawns",
+          "evalCp": -428
+        }
+      ],
+      "solutionFirst": {
+        "san": "Rh8+",
+        "from": "h7",
+        "to": "h8",
+        "piece": "r"
+      }
+    },
+    {
+      "id": "P1-explain",
+      "fixture": "P1",
+      "mode": "explain",
+      "level": "beginner",
+      "fen": "2r2k2/7R/p7/5p2/8/KPBb4/P4PPP/1r6 w - - 3 37",
+      "question": "I solved it with Rh8+ Kf7 Rxc8. Explain why it works and what pattern to remember.",
+      "solution": [
+        "Rh8+",
+        "Kf7",
+        "Rxc8"
+      ],
+      "themes": "skewer endgame",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Rh8+",
+            "Kf7",
+            "Rxc8",
+            "Rg1",
+            "Rd8",
+            "Bb5",
+            "Rd5",
+            "Rxg2"
+          ],
+          "eval": "+4.56 pawns",
+          "evalCp": 456
+        },
+        {
+          "line": [
+            "Be5",
+            "Rc2",
+            "h4",
+            "Rxf2",
+            "h5",
+            "Rh1",
+            "h6",
+            "Ke8"
+          ],
+          "eval": "-3.99 pawns",
+          "evalCp": -399
+        },
+        {
+          "line": [
+            "Bg7+",
+            "Ke8",
+            "Bf6",
+            "Rc6",
+            "Bg5",
+            "Rd1",
+            "h4",
+            "Rc2"
+          ],
+          "eval": "-4.19 pawns",
+          "evalCp": -419
+        }
+      ],
+      "solutionFirst": {
+        "san": "Rh8+",
+        "from": "h7",
+        "to": "h8",
+        "piece": "r"
+      }
+    },
+    {
+      "id": "P2-hint",
+      "fixture": "P2",
+      "mode": "hint",
+      "level": "beginner",
+      "fen": "2kr4/pppqb2B/8/4Q3/6b1/2N5/PPP2PPP/R1B1K2R b KQ - 0 15",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "Qd1+",
+        "Nxd1",
+        "Rxd1#"
+      ],
+      "themes": "mateIn2 operaMate sacrifice",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Qd1+",
+            "Nxd1",
+            "Rxd1#"
+          ],
+          "eval": "mate in 2",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Bb4",
+            "O-O",
+            "Qxh7",
+            "Qe4",
+            "Qd7",
+            "Bf4",
+            "Bxc3",
+            "bxc3"
+          ],
+          "eval": "-6.84 pawns",
+          "evalCp": -684
+        },
+        {
+          "line": [
+            "Bf8",
+            "Bd3",
+            "Re8",
+            "Qxe8+",
+            "Qxe8+",
+            "Be3",
+            "Bb4",
+            "Kf1"
+          ],
+          "eval": "-7.03 pawns",
+          "evalCp": -703
+        }
+      ],
+      "solutionFirst": {
+        "san": "Qd1+",
+        "from": "d7",
+        "to": "d1",
+        "piece": "q"
+      }
+    },
+    {
+      "id": "P2-explain",
+      "fixture": "P2",
+      "mode": "explain",
+      "level": "beginner",
+      "fen": "2kr4/pppqb2B/8/4Q3/6b1/2N5/PPP2PPP/R1B1K2R b KQ - 0 15",
+      "question": "I solved it with Qd1+ Nxd1 Rxd1#. Explain why it works and what pattern to remember.",
+      "solution": [
+        "Qd1+",
+        "Nxd1",
+        "Rxd1#"
+      ],
+      "themes": "mateIn2 operaMate sacrifice",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Qd1+",
+            "Nxd1",
+            "Rxd1#"
+          ],
+          "eval": "mate in 2",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Bf6",
+            "Bf5",
+            "Bxe5",
+            "Bxd7+",
+            "Rxd7",
+            "O-O",
+            "Re7",
+            "Be3"
+          ],
+          "eval": "-7.63 pawns",
+          "evalCp": -763
+        },
+        {
+          "line": [
+            "Bc5",
+            "Bf5",
+            "Qxf5",
+            "Qxf5+",
+            "Bxf5",
+            "O-O",
+            "b5",
+            "Be3"
+          ],
+          "eval": "-7.72 pawns",
+          "evalCp": -772
+        }
+      ],
+      "solutionFirst": {
+        "san": "Qd1+",
+        "from": "d7",
+        "to": "d1",
+        "piece": "q"
+      }
+    },
+    {
+      "id": "P3-hint",
+      "fixture": "P3",
+      "mode": "hint",
+      "level": "improver",
+      "fen": "1r3bk1/R4p1p/p1P1p1p1/4P3/2P2PP1/P7/4N2P/6K1 b - - 0 28",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "Bc5+",
+        "Kg2",
+        "Bxa7"
+      ],
+      "themes": "fork endgame",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Bc5+",
+            "Kf1",
+            "Bxa7",
+            "Nc3",
+            "Rc8",
+            "Ke2",
+            "Rxc6",
+            "Kd3"
+          ],
+          "eval": "+4.88 pawns",
+          "evalCp": 488
+        },
+        {
+          "line": [
+            "g5",
+            "Rxa6",
+            "Bg7",
+            "Ra5",
+            "Rc8",
+            "Nd4",
+            "gxf4",
+            "Kf2"
+          ],
+          "eval": "-4.38 pawns",
+          "evalCp": -438
+        },
+        {
+          "line": [
+            "h5",
+            "Rxa6",
+            "hxg4",
+            "Kf2",
+            "g5",
+            "Kg3",
+            "Kh7",
+            "fxg5"
+          ],
+          "eval": "-4.44 pawns",
+          "evalCp": -444
+        }
+      ],
+      "solutionFirst": {
+        "san": "Bc5+",
+        "from": "f8",
+        "to": "c5",
+        "piece": "b"
+      }
+    },
+    {
+      "id": "P3-explain",
+      "fixture": "P3",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "1r3bk1/R4p1p/p1P1p1p1/4P3/2P2PP1/P7/4N2P/6K1 b - - 0 28",
+      "question": "I solved it with Bc5+ Kg2 Bxa7. Explain why it works and what pattern to remember.",
+      "solution": [
+        "Bc5+",
+        "Kg2",
+        "Bxa7"
+      ],
+      "themes": "fork endgame",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Bc5+",
+            "Kg2",
+            "Bxa7",
+            "Nc3",
+            "Rc8",
+            "Nd5",
+            "Kf8",
+            "Nb4"
+          ],
+          "eval": "+5.25 pawns",
+          "evalCp": 525
+        },
+        {
+          "line": [
+            "Rb6",
+            "c7",
+            "Rc6",
+            "Kg2",
+            "Rxc4",
+            "Nd4",
+            "Rc3",
+            "Rb7"
+          ],
+          "eval": "-4.55 pawns",
+          "evalCp": -455
+        },
+        {
+          "line": [
+            "g5",
+            "Rxa6",
+            "Bc5+",
+            "Kg2",
+            "Kf8",
+            "Ra5",
+            "Be3",
+            "f5"
+          ],
+          "eval": "-4.59 pawns",
+          "evalCp": -459
+        }
+      ],
+      "solutionFirst": {
+        "san": "Bc5+",
+        "from": "f8",
+        "to": "c5",
+        "piece": "b"
+      }
+    },
+    {
+      "id": "P4-hint",
+      "fixture": "P4",
+      "mode": "hint",
+      "level": "improver",
+      "fen": "r3Q3/1b4rk/p3p2p/1p1pP3/2pPq1P1/6K1/5PP1/7R w - - 5 35",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "Rxh6+",
+        "Kxh6",
+        "Qh5#"
+      ],
+      "themes": "mateIn2 sacrifice attraction",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Rxh6+",
+            "Kxh6",
+            "Qh5#"
+          ],
+          "eval": "mate in 2",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Qxe6",
+            "Qxg4+",
+            "Qxg4",
+            "Rag8",
+            "Qxg7+",
+            "Rxg7+",
+            "Kf4",
+            "Bc8"
+          ],
+          "eval": "-6.28 pawns",
+          "evalCp": -628
+        },
+        {
+          "line": [
+            "Qh5",
+            "Kg8",
+            "Rh4",
+            "Qg6",
+            "Qxh6",
+            "Qxh6",
+            "Rxh6",
+            "Bc6"
+          ],
+          "eval": "-7.21 pawns",
+          "evalCp": -721
+        }
+      ],
+      "solutionFirst": {
+        "san": "Rxh6+",
+        "from": "h1",
+        "to": "h6",
+        "piece": "r"
+      }
+    },
+    {
+      "id": "P4-explain",
+      "fixture": "P4",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "r3Q3/1b4rk/p3p2p/1p1pP3/2pPq1P1/6K1/5PP1/7R w - - 5 35",
+      "question": "I solved it with Rxh6+ Kxh6 Qh5#. Explain why it works and what pattern to remember.",
+      "solution": [
+        "Rxh6+",
+        "Kxh6",
+        "Qh5#"
+      ],
+      "themes": "mateIn2 sacrifice attraction",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Rxh6+",
+            "Kxh6",
+            "Qh5#"
+          ],
+          "eval": "mate in 2",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Qxe6",
+            "Qxg4+",
+            "Qxg4",
+            "Rag8",
+            "Qxg7+",
+            "Rxg7+",
+            "Kf4",
+            "Bc8"
+          ],
+          "eval": "-6.69 pawns",
+          "evalCp": -669
+        },
+        {
+          "line": [
+            "Qh5",
+            "Kg8",
+            "Rf1",
+            "Rf8",
+            "f4",
+            "Qg6",
+            "Qxg6",
+            "Rxg6"
+          ],
+          "eval": "-8.59 pawns",
+          "evalCp": -859
+        }
+      ],
+      "solutionFirst": {
+        "san": "Rxh6+",
+        "from": "h1",
+        "to": "h6",
+        "piece": "r"
+      }
+    },
+    {
+      "id": "P5-hint",
+      "fixture": "P5",
+      "mode": "hint",
+      "level": "improver",
+      "fen": "2rqr3/pp2kppp/2n1pn2/1B4B1/4P3/8/PP3PPP/R2QK2R b KQ - 2 13",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "Qa5+",
+        "Bd2",
+        "Qxb5"
+      ],
+      "themes": "fork middlegame",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Qa5+",
+            "Qd2",
+            "Qxb5",
+            "a4",
+            "Qa6",
+            "e5",
+            "Nxe5",
+            "Qb4+"
+          ],
+          "eval": "+6.10 pawns",
+          "evalCp": 610
+        },
+        {
+          "line": [
+            "Qxd1+",
+            "Rxd1",
+            "h6",
+            "Bxf6+",
+            "Kxf6",
+            "h4",
+            "Red8",
+            "Rxd8"
+          ],
+          "eval": "+0.32 pawns",
+          "evalCp": 32
+        },
+        {
+          "line": [
+            "h6",
+            "Bxf6+",
+            "Kxf6",
+            "Qf3+",
+            "Kg6",
+            "O-O",
+            "Qa5",
+            "Bxc6"
+          ],
+          "eval": "+0.22 pawns",
+          "evalCp": 22
+        }
+      ],
+      "solutionFirst": {
+        "san": "Qa5+",
+        "from": "d8",
+        "to": "a5",
+        "piece": "q"
+      }
+    },
+    {
+      "id": "P5-explain",
+      "fixture": "P5",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "2rqr3/pp2kppp/2n1pn2/1B4B1/4P3/8/PP3PPP/R2QK2R b KQ - 2 13",
+      "question": "I solved it with Qa5+ Bd2 Qxb5. Explain why it works and what pattern to remember.",
+      "solution": [
+        "Qa5+",
+        "Bd2",
+        "Qxb5"
+      ],
+      "themes": "fork middlegame",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Qa5+",
+            "Qd2",
+            "Qxb5",
+            "a4",
+            "Qa6",
+            "e5",
+            "Nxe5",
+            "Qb4+"
+          ],
+          "eval": "+6.13 pawns",
+          "evalCp": 613
+        },
+        {
+          "line": [
+            "h6",
+            "Bxf6+",
+            "Kxf6",
+            "Qf3+",
+            "Kg6",
+            "O-O",
+            "Qg5",
+            "Bxc6"
+          ],
+          "eval": "+0.34 pawns",
+          "evalCp": 34
+        },
+        {
+          "line": [
+            "Qxd1+",
+            "Rxd1",
+            "h6",
+            "Bxf6+",
+            "Kxf6",
+            "Ke2",
+            "Rc7",
+            "Rd2"
+          ],
+          "eval": "+0.16 pawns",
+          "evalCp": 16
+        }
+      ],
+      "solutionFirst": {
+        "san": "Qa5+",
+        "from": "d8",
+        "to": "a5",
+        "piece": "q"
+      }
+    },
+    {
+      "id": "P6-hint",
+      "fixture": "P6",
+      "mode": "hint",
+      "level": "improver",
+      "fen": "8/pp1r1k1p/2p2pp1/8/4N2P/P5P1/1PPn1PK1/1R6 w - - 7 25",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "Rd1",
+        "Rd4",
+        "Nxd2"
+      ],
+      "themes": "endgame advantage",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Rd1",
+            "Rd4",
+            "Nxd2",
+            "Rd5",
+            "Kf1",
+            "b5",
+            "b4",
+            "c5"
+          ],
+          "eval": "+4.59 pawns",
+          "evalCp": 459
+        },
+        {
+          "line": [
+            "Nxd2",
+            "Rxd2",
+            "Rc1",
+            "Rd5",
+            "Re1",
+            "b5",
+            "Rc1",
+            "Rc5"
+          ],
+          "eval": "-0.16 pawns",
+          "evalCp": -16
+        },
+        {
+          "line": [
+            "Re1",
+            "Nc4",
+            "Nc5",
+            "Re7",
+            "Rb1",
+            "b6",
+            "Nd3",
+            "c5"
+          ],
+          "eval": "-0.49 pawns",
+          "evalCp": -49
+        }
+      ],
+      "solutionFirst": {
+        "san": "Rd1",
+        "from": "b1",
+        "to": "d1",
+        "piece": "r"
+      }
+    },
+    {
+      "id": "P6-explain",
+      "fixture": "P6",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "8/pp1r1k1p/2p2pp1/8/4N2P/P5P1/1PPn1PK1/1R6 w - - 7 25",
+      "question": "I solved it with Rd1 Rd4 Nxd2. Explain why it works and what pattern to remember.",
+      "solution": [
+        "Rd1",
+        "Rd4",
+        "Nxd2"
+      ],
+      "themes": "endgame advantage",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Rd1",
+            "Rd4",
+            "Nxd2",
+            "Rd5",
+            "Kf1",
+            "a5",
+            "c4",
+            "Rd4"
+          ],
+          "eval": "+4.73 pawns",
+          "evalCp": 473
+        },
+        {
+          "line": [
+            "Nxd2",
+            "Rxd2",
+            "Rc1",
+            "h5",
+            "Kf3",
+            "Rd5",
+            "Ke3",
+            "Re5+"
+          ],
+          "eval": "-0.05 pawns",
+          "evalCp": -5
+        },
+        {
+          "line": [
+            "Re1",
+            "Nc4",
+            "Nc5",
+            "Re7",
+            "Rb1",
+            "b6",
+            "Nd3",
+            "c5"
+          ],
+          "eval": "-0.34 pawns",
+          "evalCp": -34
+        }
+      ],
+      "solutionFirst": {
+        "san": "Rd1",
+        "from": "b1",
+        "to": "d1",
+        "piece": "r"
+      }
+    },
+    {
+      "id": "P7-hint",
+      "fixture": "P7",
+      "mode": "hint",
+      "level": "club",
+      "fen": "r3k2r/pp1b1p1p/2n1pp2/q2p3N/1b1P4/1QN1P3/PP3PPP/R3KB1R b KQkq - 7 11",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "Nxd4",
+        "exd4",
+        "Ba4",
+        "Qxa4+",
+        "Qxa4"
+      ],
+      "themes": "clearance pin sacrifice long",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Nxd4",
+            "exd4",
+            "Ba4",
+            "Qxb4",
+            "Qxb4",
+            "Ba6",
+            "bxa6",
+            "O-O"
+          ],
+          "eval": "+5.96 pawns",
+          "evalCp": 596
+        },
+        {
+          "line": [
+            "Ke7",
+            "a3",
+            "Bxc3+",
+            "bxc3",
+            "Qb6",
+            "Qc2",
+            "Na5",
+            "Rb1"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "Rc8",
+            "a3",
+            "Ke7",
+            "Be2",
+            "Bxc3+",
+            "bxc3",
+            "Qb6",
+            "Qxb6"
+          ],
+          "eval": "-0.20 pawns",
+          "evalCp": -20
+        }
+      ],
+      "solutionFirst": {
+        "san": "Nxd4",
+        "from": "c6",
+        "to": "d4",
+        "piece": "n"
+      }
+    },
+    {
+      "id": "P7-explain",
+      "fixture": "P7",
+      "mode": "explain",
+      "level": "club",
+      "fen": "r3k2r/pp1b1p1p/2n1pp2/q2p3N/1b1P4/1QN1P3/PP3PPP/R3KB1R b KQkq - 7 11",
+      "question": "I solved it with Nxd4 exd4 Ba4 Qxa4+ Qxa4. Explain why it works and what pattern to remember.",
+      "solution": [
+        "Nxd4",
+        "exd4",
+        "Ba4",
+        "Qxa4+",
+        "Qxa4"
+      ],
+      "themes": "clearance pin sacrifice long",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Nxd4",
+            "exd4",
+            "Ba4",
+            "Nxf6+",
+            "Ke7",
+            "Qxa4",
+            "Qxa4",
+            "Nxd5+"
+          ],
+          "eval": "+5.98 pawns",
+          "evalCp": 598
+        },
+        {
+          "line": [
+            "Ke7",
+            "a3",
+            "Bxc3+",
+            "bxc3",
+            "Qb6",
+            "Qc2",
+            "Na5",
+            "Rb1"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "f5",
+            "Nf6+",
+            "Kd8",
+            "Nxd7",
+            "Kxd7",
+            "Bd3",
+            "Qb6",
+            "O-O"
+          ],
+          "eval": "-0.21 pawns",
+          "evalCp": -21
+        }
+      ],
+      "solutionFirst": {
+        "san": "Nxd4",
+        "from": "c6",
+        "to": "d4",
+        "piece": "n"
+      }
+    },
+    {
+      "id": "P8-hint",
+      "fixture": "P8",
+      "mode": "hint",
+      "level": "club",
+      "fen": "7k/6pp/3p1b1P/p3q3/8/PB2r3/Kp4Q1/5R2 w - - 0 38",
+      "question": "I'm stuck on this puzzle. Give me a hint, but don't tell me the move.",
+      "solution": [
+        "hxg7+",
+        "Bxg7",
+        "Rf8+",
+        "Bxf8",
+        "Qg8#"
+      ],
+      "themes": "mateIn3 sacrifice advancedPawn",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "hxg7+",
+            "Bxg7",
+            "Rf8+",
+            "Bxf8",
+            "Qg8#"
+          ],
+          "eval": "mate in 3",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Qa8+",
+            "Qe8",
+            "hxg7+",
+            "Bxg7",
+            "Qb7",
+            "Re7",
+            "Qf3",
+            "b1=Q+"
+          ],
+          "eval": "-2.81 pawns",
+          "evalCp": -281
+        },
+        {
+          "line": [
+            "Rb1",
+            "d5",
+            "Qd2",
+            "d4",
+            "Qc2",
+            "Rc3",
+            "Qxb2",
+            "Rc8"
+          ],
+          "eval": "-3.07 pawns",
+          "evalCp": -307
+        }
+      ],
+      "solutionFirst": {
+        "san": "hxg7+",
+        "from": "h6",
+        "to": "g7",
+        "piece": "p"
+      }
+    },
+    {
+      "id": "P8-explain",
+      "fixture": "P8",
+      "mode": "explain",
+      "level": "club",
+      "fen": "7k/6pp/3p1b1P/p3q3/8/PB2r3/Kp4Q1/5R2 w - - 0 38",
+      "question": "I solved it with hxg7+ Bxg7 Rf8+ Bxf8 Qg8#. Explain why it works and what pattern to remember.",
+      "solution": [
+        "hxg7+",
+        "Bxg7",
+        "Rf8+",
+        "Bxf8",
+        "Qg8#"
+      ],
+      "themes": "mateIn3 sacrifice advancedPawn",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "hxg7+",
+            "Bxg7",
+            "Rf8+",
+            "Bxf8",
+            "Qg8#"
+          ],
+          "eval": "mate in 3",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Qa8+",
+            "Qe8",
+            "Qb7",
+            "Re7",
+            "Qd5",
+            "Rc7",
+            "hxg7+",
+            "Bxg7"
+          ],
+          "eval": "-2.50 pawns",
+          "evalCp": -250
+        },
+        {
+          "line": [
+            "Rb1",
+            "d5",
+            "hxg7+",
+            "Bxg7",
+            "Qc2",
+            "Qc3",
+            "Rd1",
+            "h6"
+          ],
+          "eval": "-2.96 pawns",
+          "evalCp": -296
+        }
+      ],
+      "solutionFirst": {
+        "san": "hxg7+",
+        "from": "h6",
+        "to": "g7",
+        "piece": "p"
+      }
+    },
+    {
+      "id": "G1-explain",
+      "fixture": "G1",
+      "mode": "critique",
+      "level": "improver",
+      "fen": "rn1qkbnr/ppp2p1p/3p2p1/4N3/2B1P1b1/2N5/PPPP1PPP/R1BQK2R b KQkq - 0 5",
+      "question": "In my game I played Bxd1 here (move 5). What was wrong with it?",
+      "proposed": {
+        "san": "Bxd1",
+        "legal": true,
+        "fenAfter": "rn1qkbnr/ppp2p1p/3p2p1/4N3/2B1P3/2N5/PPPP1PPP/R1BbK2R w KQkq - 0 6",
+        "opponentBest": {
+          "line": [
+            "Bxf7+",
+            "Ke7",
+            "Nd5#"
+          ],
+          "eval": "mate in 2",
+          "evalCp": 10000
+        }
+      },
+      "engineLabel": "5...Bxd1:mistake(best dxe5)",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "dxe5",
+            "Qxg4",
+            "Nc6",
+            "d3",
+            "Nd4",
+            "Qd1",
+            "Bh6",
+            "Bxh6"
+          ],
+          "eval": "-2.16 pawns",
+          "evalCp": -216
+        },
+        {
+          "line": [
+            "Be6",
+            "Bxe6",
+            "dxe5",
+            "Bd5",
+            "c6",
+            "Bb3",
+            "a5",
+            "d3"
+          ],
+          "eval": "-2.53 pawns",
+          "evalCp": -253
+        },
+        {
+          "line": [
+            "d5",
+            "Bb5+",
+            "Bd7",
+            "Qf3",
+            "Qf6",
+            "Nxd7",
+            "Nxd7",
+            "Nxd5"
+          ],
+          "eval": "-4.43 pawns",
+          "evalCp": -443
+        }
+      ]
+    },
+    {
+      "id": "G2-explain",
+      "fixture": "G2",
+      "mode": "critique",
+      "level": "improver",
+      "fen": "rn1qkbnr/ppp2ppp/8/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R b KQkq - 1 6",
+      "question": "In my game I played Nf6 here (move 6). What was wrong with it?",
+      "proposed": {
+        "san": "Nf6",
+        "legal": true,
+        "fenAfter": "rn1qkb1r/ppp2ppp/5n2/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R w KQkq - 2 7",
+        "opponentBest": {
+          "line": [
+            "Qb3",
+            "Bc5",
+            "Bxf7+",
+            "Ke7",
+            "Bd5",
+            "Nbd7",
+            "O-O",
+            "c6"
+          ],
+          "eval": "+2.69 pawns",
+          "evalCp": 269
+        }
+      },
+      "engineLabel": "6...Nf6:inaccuracy(best Qd7)",
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Qf6",
+            "Qb3",
+            "Nd7",
+            "Qxb7",
+            "Rb8",
+            "Qa6",
+            "Qxa6",
+            "Bxa6"
+          ],
+          "eval": "-1.20 pawns",
+          "evalCp": -120
+        },
+        {
+          "line": [
+            "Qd7",
+            "Qb3",
+            "c6",
+            "Be3",
+            "Nf6",
+            "Nd2",
+            "Bd6",
+            "Bg5"
+          ],
+          "eval": "-1.54 pawns",
+          "evalCp": -154
+        },
+        {
+          "line": [
+            "Qe7",
+            "Bg5",
+            "Nf6",
+            "Nc3",
+            "c6",
+            "O-O-O",
+            "Nbd7",
+            "h4"
+          ],
+          "eval": "-1.85 pawns",
+          "evalCp": -185
+        }
+      ]
+    },
+    {
+      "id": "O1-deviation",
+      "fixture": "O1",
+      "mode": "critique",
+      "level": "improver",
+      "fen": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "question": "My repertoire says 4.c3 here but I played 4.d4. Is that bad? What is the idea of c3?",
+      "proposed": {
+        "san": "d4",
+        "legal": true,
+        "fenAfter": "r1bqk1nr/pppp1ppp/2n5/2b1p3/2BPP3/5N2/PPP2PPP/RNBQK2R b KQkq - 0 4",
+        "opponentBest": {
+          "line": [
+            "Bxd4",
+            "Nxd4",
+            "Nxd4",
+            "Be3",
+            "Nc6",
+            "Qh5",
+            "Qe7",
+            "Nc3"
+          ],
+          "eval": "+0.10 pawns",
+          "evalCp": 10
+        }
+      },
+      "repertoireMove": "c3",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "c3",
+            "Nf6",
+            "d4",
+            "exd4",
+            "e5",
+            "d5",
+            "Bb5",
+            "Ne4"
+          ],
+          "eval": "+0.09 pawns",
+          "evalCp": 9
+        },
+        {
+          "line": [
+            "Nc3",
+            "Nf6",
+            "d3",
+            "O-O",
+            "a3",
+            "d6",
+            "Na4",
+            "Bb6"
+          ],
+          "eval": "+0.07 pawns",
+          "evalCp": 7
+        },
+        {
+          "line": [
+            "d3",
+            "d6",
+            "Ng5",
+            "Nh6",
+            "c3",
+            "O-O",
+            "a4",
+            "Bb6"
+          ],
+          "eval": "+0.06 pawns",
+          "evalCp": 6
+        }
+      ]
+    },
+    {
+      "id": "E1-explain",
+      "fixture": "E1",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "8/8/8/4k3/8/8/8/3QK3 w - - 0 1",
+      "question": "King + queen vs king mate. What is the result with best play and what is the plan?",
+      "tablebase": {
+        "result": "side to move wins",
+        "bestMoves": [
+          "Qd7",
+          "Qd8",
+          "Kd2",
+          "Ke2"
+        ],
+        "dtm": 13
+      },
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Qd7",
+            "Kf4",
+            "Ke2",
+            "Ke4",
+            "Kf2",
+            "Ke5",
+            "Kf3",
+            "Kf6"
+          ],
+          "eval": "mate in 8",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Kf2",
+            "Ke6",
+            "Ke3",
+            "Kf7",
+            "Qd7+",
+            "Kg6",
+            "Qe7",
+            "Kf5"
+          ],
+          "eval": "mate in 8",
+          "evalCp": 10000
+        }
+      ]
+    },
+    {
+      "id": "E2-explain",
+      "fixture": "E2",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "1K1k4/1P6/8/8/8/8/r7/2R5 w - - 0 1",
+      "question": "Lucena position (build a bridge). What is the result with best play and what is the plan?",
+      "tablebase": {
+        "result": "side to move wins",
+        "bestMoves": [
+          "Rd1+",
+          "Rc4",
+          "Rc5",
+          "Rb1"
+        ],
+        "dtm": 41
+      },
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Rd1+",
+            "Ke7",
+            "Rd4",
+            "Rc2",
+            "Ra4",
+            "Kd7",
+            "Ka8",
+            "Rb2"
+          ],
+          "eval": "+4.79 pawns",
+          "evalCp": 479
+        },
+        {
+          "line": [
+            "Rc4",
+            "Kd7",
+            "Rd4+",
+            "Kc6",
+            "Kc8",
+            "Rb2",
+            "b8=R",
+            "Rxb8+"
+          ],
+          "eval": "+4.79 pawns",
+          "evalCp": 479
+        }
+      ]
+    },
+    {
+      "id": "E3-explain",
+      "fixture": "E3",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1",
+      "question": "King and pawn, opposition (White to move: draw; Black to move: White wins). What is the result with best play and what is the plan?",
+      "tablebase": {
+        "result": "side to move wins",
+        "bestMoves": [
+          "Kd6",
+          "Kf6"
+        ],
+        "dtm": 21
+      },
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Kf4",
+            "Kf6",
+            "e4",
+            "Ke6",
+            "e5",
+            "Kd7",
+            "Kf5",
+            "Ke7"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "Kd4",
+            "Kd6",
+            "Ke4",
+            "Ke6"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        }
+      ]
+    },
+    {
+      "id": "E4-explain",
+      "fixture": "E4",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "3k4/8/r7/3PK3/8/8/8/7R b - - 0 1",
+      "question": "Philidor defence (rook on the third rank). What is the result with best play and what is the plan?",
+      "tablebase": {
+        "result": "draw",
+        "bestMoves": [
+          "Ra2",
+          "Ra3",
+          "Ra4",
+          "Rb6"
+        ],
+        "dtm": 0
+      },
+      "sideToMove": "Black",
+      "engine": [
+        {
+          "line": [
+            "Ke8",
+            "Rh8+",
+            "Kd7",
+            "Rh7+",
+            "Ke8",
+            "Rg7",
+            "Rb6",
+            "Rg8+"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "Kd7",
+            "Rh7+",
+            "Ke8",
+            "Rg7",
+            "Rb6",
+            "Rg8+",
+            "Ke7",
+            "d6+"
+          ],
+          "eval": "-0.02 pawns",
+          "evalCp": -2
+        }
+      ]
+    },
+    {
+      "id": "T1-hint",
+      "fixture": "T1",
+      "mode": "hint",
+      "level": "improver",
+      "fen": "5r1k/6pp/7N/8/8/1Q6/8/6K1 w - - 0 1",
+      "question": "I'm stuck. Can you give me a hint without telling me the move?",
+      "solution": [
+        "Qg8+",
+        "Rxg8",
+        "Nf7#"
+      ],
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Qg8+",
+            "Rxg8",
+            "Nf7#"
+          ],
+          "eval": "mate in 2",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Nf7+",
+            "Kg8",
+            "Nh6+",
+            "Kh8",
+            "Qg8+",
+            "Rxg8",
+            "Nf7#"
+          ],
+          "eval": "mate in 4",
+          "evalCp": 10000
+        },
+        {
+          "line": [
+            "Qb4",
+            "Rd8",
+            "Qf4",
+            "Ra8",
+            "Qd4",
+            "Ra1+",
+            "Kg2",
+            "Ra2+"
+          ],
+          "eval": "+8.93 pawns",
+          "evalCp": 893
+        }
+      ],
+      "solutionFirst": {
+        "san": "Qg8+",
+        "from": "b3",
+        "to": "g8",
+        "piece": "q"
+      }
+    },
+    {
+      "id": "T2-critique",
+      "fixture": "T2",
+      "mode": "critique",
+      "level": "improver",
+      "fen": "r1bqkbnr/pppp1ppp/8/4p3/2BnP3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "question": "I want to play Nxe5 and win a pawn, since their knight left c6. Good idea?",
+      "proposed": {
+        "san": "Nxe5",
+        "legal": true,
+        "fenAfter": "r1bqkbnr/pppp1ppp/8/4N3/2BnP3/8/PPPP1PPP/RNBQK2R b KQkq - 0 4",
+        "opponentBest": {
+          "line": [
+            "Qg5",
+            "Bxf7+",
+            "Kd8",
+            "O-O",
+            "Qxe5",
+            "c3",
+            "Ne6",
+            "d3"
+          ],
+          "eval": "+0.76 pawns",
+          "evalCp": 76
+        }
+      },
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Nxd4",
+            "exd4",
+            "O-O",
+            "Nf6",
+            "Re1",
+            "d6",
+            "c3",
+            "Be7"
+          ],
+          "eval": "+1.05 pawns",
+          "evalCp": 105
+        },
+        {
+          "line": [
+            "O-O",
+            "Nxf3+",
+            "Qxf3",
+            "Qf6",
+            "Qg3",
+            "d6",
+            "Na3",
+            "Be6"
+          ],
+          "eval": "+0.95 pawns",
+          "evalCp": 95
+        },
+        {
+          "line": [
+            "Nc3",
+            "c6",
+            "O-O",
+            "Nxf3+",
+            "Qxf3",
+            "Nf6",
+            "Qg3",
+            "Qe7"
+          ],
+          "eval": "+0.41 pawns",
+          "evalCp": 41
+        }
+      ]
+    },
+    {
+      "id": "T3-options",
+      "fixture": "T3",
+      "mode": "explain",
+      "level": "improver",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+      "question": "What's the best move here?",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Bb5",
+            "a6",
+            "Ba4",
+            "Nf6",
+            "O-O",
+            "Nxe4",
+            "d4",
+            "exd4"
+          ],
+          "eval": "+0.34 pawns",
+          "evalCp": 34
+        },
+        {
+          "line": [
+            "d4",
+            "exd4",
+            "Nxd4",
+            "Bc5",
+            "Nb3",
+            "Bb6",
+            "Nc3",
+            "Nf6"
+          ],
+          "eval": "+0.31 pawns",
+          "evalCp": 31
+        },
+        {
+          "line": [
+            "Bc4",
+            "Nf6",
+            "d3",
+            "Bc5",
+            "O-O",
+            "d6",
+            "c3",
+            "a6"
+          ],
+          "eval": "+0.10 pawns",
+          "evalCp": 10
+        },
+        {
+          "line": [
+            "Nc3",
+            "Nf6",
+            "d4",
+            "exd4",
+            "Nxd4",
+            "Bb4",
+            "Nxc6",
+            "bxc6"
+          ],
+          "eval": "+0.09 pawns",
+          "evalCp": 9
+        }
+      ]
+    },
+    {
+      "id": "T4-illegal",
+      "fixture": "T4",
+      "mode": "critique",
+      "level": "improver",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+      "question": "Why is Bxf7+ the strongest move here? I'm already a pawn up, right?",
+      "proposed": {
+        "san": "Bxf7+",
+        "legal": false
+      },
+      "material": "equal (both sides have all their pieces and 8 pawns)",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Bb5",
+            "a6",
+            "Ba4",
+            "Nf6",
+            "O-O",
+            "Nxe4",
+            "d4",
+            "b5"
+          ],
+          "eval": "+0.37 pawns",
+          "evalCp": 37
+        },
+        {
+          "line": [
+            "d4",
+            "exd4",
+            "Nxd4",
+            "Bc5",
+            "Nb3",
+            "Bb6",
+            "Qe2",
+            "Nge7"
+          ],
+          "eval": "+0.29 pawns",
+          "evalCp": 29
+        },
+        {
+          "line": [
+            "Bc4",
+            "Nf6",
+            "d3",
+            "Bc5",
+            "c3",
+            "d6",
+            "O-O",
+            "a6"
+          ],
+          "eval": "+0.12 pawns",
+          "evalCp": 12
+        }
+      ]
+    },
+    {
+      "id": "T5-followup",
+      "fixture": "T5",
+      "mode": "critique",
+      "level": "improver",
+      "fen": "r1b1kbnr/pppp1ppp/8/4N1q1/2BnP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 5",
+      "question": "OK, I took on e5 anyway and they played Qg5. Should I grab f7 with the knight now?",
+      "proposed": {
+        "san": "Nxf7",
+        "legal": true,
+        "fenAfter": "r1b1kbnr/pppp1Npp/8/6q1/2BnP3/8/PPPP1PPP/RNBQK2R b KQkq - 0 5",
+        "opponentBest": {
+          "line": [
+            "Qxg2",
+            "d3",
+            "Qxh1+",
+            "Kd2",
+            "Qxd1+",
+            "Kxd1",
+            "d5",
+            "Bxd5"
+          ],
+          "eval": "+6.51 pawns",
+          "evalCp": 651
+        }
+      },
+      "previous": "Earlier position: after 1.e4 e5 2.Nf3 Nc6 3.Bc4 Nd4 the learner asked about 4.Nxe5 and was told ...Qg5 hits e5 and g2. The learner played 4.Nxe5 anyway and Black replied 4...Qg5.",
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "O-O",
+            "Qxe5",
+            "c3",
+            "Ne6",
+            "d4",
+            "Qxe4",
+            "Re1",
+            "Qc6"
+          ],
+          "eval": "-0.65 pawns",
+          "evalCp": -65
+        },
+        {
+          "line": [
+            "Bxf7+",
+            "Kd8",
+            "O-O",
+            "Qxe5",
+            "d3",
+            "Qf6",
+            "Bc4",
+            "b5"
+          ],
+          "eval": "-0.65 pawns",
+          "evalCp": -65
+        },
+        {
+          "line": [
+            "d3",
+            "Qxe5",
+            "c3",
+            "Ne6",
+            "f4",
+            "Nxf4",
+            "Bxf7+",
+            "Kxf7"
+          ],
+          "eval": "-1.55 pawns",
+          "evalCp": -155
+        }
+      ]
+    },
+    {
+      "id": "T6-beginner",
+      "fixture": "T6",
+      "mode": "explain",
+      "level": "beginner",
+      "fen": "r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1",
+      "question": "Explain why Nc7+ works.",
+      "solution": [
+        "Nc7+"
+      ],
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Nc7+",
+            "Kd7",
+            "Nxa8",
+            "Kc6",
+            "Ke2",
+            "Kb7",
+            "Ke3",
+            "Kxa8"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "Kf2",
+            "Ra3",
+            "Ne3",
+            "Kf7",
+            "Kf3",
+            "Ke6",
+            "Ke4",
+            "Ra4+"
+          ],
+          "eval": "-0.12 pawns",
+          "evalCp": -12
+        },
+        {
+          "line": [
+            "Ke2",
+            "Ra3",
+            "Ne3",
+            "Kf7",
+            "Kf3",
+            "Ke6",
+            "Ke4",
+            "Ra4+"
+          ],
+          "eval": "-0.13 pawns",
+          "evalCp": -13
+        }
+      ],
+      "solutionFirst": {
+        "san": "Nc7+",
+        "from": "d5",
+        "to": "c7",
+        "piece": "n"
+      }
+    },
+    {
+      "id": "T6-club",
+      "fixture": "T6",
+      "mode": "explain",
+      "level": "club",
+      "fen": "r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1",
+      "question": "Explain why Nc7+ works.",
+      "solution": [
+        "Nc7+"
+      ],
+      "sideToMove": "White",
+      "engine": [
+        {
+          "line": [
+            "Nc7+",
+            "Kd7",
+            "Nxa8",
+            "Kc6",
+            "Kd2",
+            "Kb7",
+            "Kc3",
+            "Kxa8"
+          ],
+          "eval": "+0.00 pawns",
+          "evalCp": 0
+        },
+        {
+          "line": [
+            "Kf2",
+            "Ra3",
+            "Ne3",
+            "Ke7",
+            "Kf3",
+            "Ra4",
+            "Ke2",
+            "Kd6"
+          ],
+          "eval": "-0.12 pawns",
+          "evalCp": -12
+        },
+        {
+          "line": [
+            "Ke2",
+            "Ra3",
+            "Ne3",
+            "Ke7",
+            "Kf3",
+            "Ra4",
+            "Ke2",
+            "Kd6"
+          ],
+          "eval": "-0.12 pawns",
+          "evalCp": -12
+        }
+      ],
+      "solutionFirst": {
+        "san": "Nc7+",
+        "from": "d5",
+        "to": "c7",
+        "piece": "n"
+      }
+    }
+  ]
+}

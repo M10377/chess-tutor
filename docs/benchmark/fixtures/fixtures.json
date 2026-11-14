@@ -1,0 +1,219 @@
+{
+  "version": 1,
+  "created": "2026-11-14",
+  "notes": "Reusable benchmark fixtures. Run `node --experimental-strip-types --import ./docs/benchmark/tools/ts-resolve.mjs docs/benchmark/tools/verify-fixtures.mjs` to re-verify every position and expected answer with Stockfish 19 (and the lichess 7-piece tablebase for endgames when online). Lichess puzzles are CC0 (database.lichess.org). Player profiles are in profiles.",
+  "profiles": {
+    "beginner": "Knows the rules, plays 10-minute games, rated about 600-900 on chess.com. Wants to stop hanging pieces.",
+    "improver": "Target profile (Micah / InternalGuess): free-tier chess.com club player, assumed 900-1400 rapid. Wants game review, puzzles from own mistakes, plain explanations.",
+    "club": "Rated about 1700-2000, studies openings and endgames, wants concise, non-condescending explanations."
+  },
+  "lessons": [
+    {
+      "id": "L1",
+      "title": "Back-rank mate (beginner lesson)",
+      "profile": "beginner",
+      "task": "Teach the back-rank mate idea, then check transfer with two follow-up exercises the learner solves without help.",
+      "steps": [
+        {
+          "fen": "6k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1",
+          "expect": "Ra8#",
+          "role": "worked example"
+        },
+        {
+          "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+          "expect": "Rd8#",
+          "role": "near transfer"
+        },
+        {
+          "fen": "1r4k1/5ppp/8/8/8/8/5PPP/R5K1 w - - 0 1",
+          "expectNot": "Ra8",
+          "role": "far transfer: the defender covers the back rank, so the pattern does not work"
+        }
+      ]
+    }
+  ],
+  "puzzles": [
+    {
+      "id": "P1",
+      "source": "lichess 0e597",
+      "rating": 942,
+      "themes": "skewer endgame",
+      "fen": "3r1k2/7R/p7/5p2/8/KPBb4/P4PPP/1r6 b - - 2 36",
+      "moves": "d8c8 h7h8 f8f7 h8c8",
+      "band": "beginner"
+    },
+    {
+      "id": "P2",
+      "source": "lichess 0gCzo",
+      "rating": 922,
+      "themes": "mateIn2 operaMate sacrifice",
+      "fen": "2kr4/pppqb2n/8/4Q3/6b1/2NB4/PPP2PPP/R1B1K2R w KQ - 3 15",
+      "moves": "d3h7 d7d1 c3d1 d8d1",
+      "band": "beginner"
+    },
+    {
+      "id": "P3",
+      "source": "lichess 0LEQK",
+      "rating": 1290,
+      "themes": "fork endgame",
+      "fen": "1r3bk1/R4p1p/p3p1p1/2P1P3/2P2PP1/P7/4N2P/6K1 w - - 1 28",
+      "moves": "c5c6 f8c5 g1g2 c5a7",
+      "band": "improver"
+    },
+    {
+      "id": "P4",
+      "source": "lichess 0Tnt5",
+      "rating": 1263,
+      "themes": "mateIn2 sacrifice attraction",
+      "fen": "r1b1Q3/6rk/p3p2p/1p1pP3/2pPq1P1/6K1/5PP1/7R b - - 4 34",
+      "moves": "c8b7 h1h6 h7h6 e8h5",
+      "band": "improver"
+    },
+    {
+      "id": "P5",
+      "source": "lichess 0jC12",
+      "rating": 1579,
+      "themes": "fork middlegame",
+      "fen": "2rqr3/pp2kppp/2n1pn2/6B1/4P3/8/PP3PPP/R2QKB1R w KQ - 1 13",
+      "moves": "f1b5 d8a5 g5d2 a5b5",
+      "band": "improver"
+    },
+    {
+      "id": "P6",
+      "source": "lichess 19hix",
+      "rating": 1558,
+      "themes": "endgame advantage",
+      "fen": "8/pp1r1k1p/2p2pp1/8/2n1N2P/P5P1/1PP2PK1/1R6 b - - 6 24",
+      "moves": "c4d2 b1d1 d7d4 e4d2",
+      "band": "improver"
+    },
+    {
+      "id": "P7",
+      "source": "lichess 0KE1r",
+      "rating": 2003,
+      "themes": "clearance pin sacrifice long",
+      "fen": "r3k2r/pp1b1p1p/2n1pp2/q2p4/1b1P4/1QN1P1N1/PP3PPP/R3KB1R w KQkq - 6 11",
+      "moves": "g3h5 c6d4 e3d4 d7a4 b3a4 a5a4",
+      "band": "club"
+    },
+    {
+      "id": "P8",
+      "source": "lichess 0o14m",
+      "rating": 2033,
+      "themes": "mateIn3 sacrifice advancedPawn",
+      "fen": "7k/6pp/3p1b1P/p3q3/8/PBp1r3/KP4Q1/5R2 b - - 0 37",
+      "moves": "c3b2 h6g7 f6g7 f1f8 g7f8 g2g8",
+      "band": "club"
+    }
+  ],
+  "games": [
+    {
+      "id": "G1",
+      "title": "Legal's mate miniature (user = Black, to exercise puzzles-from-my-mistakes)",
+      "pgn": "[Event \"Benchmark G1\"]\n[White \"Opponent\"]\n[Black \"InternalGuess\"]\n[Result \"1-0\"]\n[WhiteElo \"1150\"]\n[BlackElo \"1100\"]\n\n1. e4 e5 2. Nf3 d6 3. Bc4 Bg4 4. Nc3 g6 5. Nxe5 Bxd1 6. Bxf7+ Ke7 7. Nd5# 1-0",
+      "expect": "Black's 5...Bxd1 is a blunder (5...dxe5 limits the damage); 4...g6 is at least an inaccuracy. Review should flag both, explain the Legal's-mate pattern, and turn at least the 5th-move position into a practice puzzle."
+    },
+    {
+      "id": "G2",
+      "title": "Opera Game, Morphy vs Duke Karl / Count Isouard, Paris 1858 (public domain; user = Black)",
+      "pgn": "[Event \"Paris Opera\"]\n[White \"Morphy\"]\n[Black \"InternalGuess\"]\n[Result \"1-0\"]\n\n1. e4 e5 2. Nf3 d6 3. d4 Bg4 4. dxe5 Bxf3 5. Qxf3 dxe5 6. Bc4 Nf6 7. Qb3 Qe7 8. Nc3 c6 9. Bg5 b5 10. Nxb5 cxb5 11. Bxb5+ Nbd7 12. O-O-O Rd8 13. Rxd7 Rxd7 14. Rd1 Qe6 15. Bxd7+ Nxd7 16. Qb8+ Nxb8 17. Rd8# 1-0",
+      "expect": "Review should identify Black's early development errors (9...b5 and 7...Qe7 are classic teaching points), White's sacrifices as best/great, and summarize the lesson: development and open lines beat material."
+    }
+  ],
+  "openings": [
+    {
+      "id": "O1",
+      "title": "Italian Game (Giuoco Pianissimo) recall, White",
+      "profile": "improver",
+      "line": "1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d3 d6 6. O-O a6 7. a4",
+      "task": "Learner plays White's moves from memory; Black's moves are auto-played. One deliberate error on move 4 (learner plays 4. d4 instead of 4. c3). Expected: trainer flags the deviation, shows the repertoire move, schedules the line for early review, and does not count it as learned."
+    }
+  ],
+  "endgames": [
+    {
+      "id": "E1",
+      "title": "King + queen vs king mate",
+      "fen": "8/8/8/4k3/8/8/8/3QK3 w - - 0 1",
+      "task": "Mate the bare king against defence within 50 moves.",
+      "expectCategory": "win"
+    },
+    {
+      "id": "E2",
+      "title": "Lucena position (build a bridge)",
+      "fen": "1K1k4/1P6/8/8/8/8/r7/2R5 w - - 0 1",
+      "task": "Win against best defence.",
+      "expectCategory": "win"
+    },
+    {
+      "id": "E3",
+      "title": "King and pawn, opposition (White to move: draw; Black to move: White wins)",
+      "fen": "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1",
+      "task": "Hold or convert: with White to move it is a draw (Black keeps the opposition); the same position with Black to move is won for White. Learner must state the result and play it out.",
+      "expectCategory": "draw",
+      "note": "An earlier draft used 4k3/8/4K3/4P3/8/8/8/8 w, which the tablebase showed is a WIN (king on the 6th in front of the pawn). Kept as evidence that fixtures must be tablebase-checked."
+    },
+    {
+      "id": "E4",
+      "title": "Philidor defence (rook on the third rank)",
+      "fen": "3k4/8/r7/3PK3/8/8/8/7R b - - 0 1",
+      "task": "Hold the draw as Black.",
+      "expectCategory": "draw"
+    }
+  ],
+  "tutor": [
+    {
+      "id": "T1",
+      "case": "Hint without revealing the move",
+      "profile": "improver",
+      "fen": "5r1k/6pp/7N/8/8/1Q6/8/6K1 w - - 0 1",
+      "prompt": "I'm stuck. Can you give me a hint without telling me the move?",
+      "expect": "Graduated hints (e.g. 1: look at the black king's escape squares; 2: which black piece is boxing in its own king; 3: a queen sacrifice can force a piece onto a square) with no square names or SAN for the solution until asked. Solution: Qg8+ Rxg8 Nf7# (smothered mate)."
+    },
+    {
+      "id": "T2",
+      "case": "Plausible but flawed move",
+      "profile": "improver",
+      "fen": "r1bqkbnr/pppp1ppp/8/4p3/2BnP3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "prompt": "I want to play Nxe5 and win a pawn, since their knight left c6. Good idea?",
+      "proposed": "Nxe5",
+      "expect": "Explain that Nxe5 walks into ...Qg5, hitting e5 and g2 at once; acknowledge the learner's correct observation (e5 is undefended); recommend Nxd4 or c3/O-O; suggest a fork/double-attack drill."
+    },
+    {
+      "id": "T3",
+      "case": "Multiple sound continuations",
+      "profile": "improver",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+      "prompt": "What's the best move here?",
+      "expect": "Name at least two sound moves (Bb5, Bc4, d4, Nc3 are all within a few tenths of a pawn at depth 20) and explain the idea of each rather than declaring one 'the' move."
+    },
+    {
+      "id": "T4",
+      "case": "Misleading premise and illegal move",
+      "profile": "improver",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+      "prompt": "Why is Bxf7+ the strongest move here? I'm already a pawn up, right?",
+      "proposed": "Bxf7+",
+      "expect": "Say Bxf7+ is not legal (the f1 bishop's diagonal is blocked and it cannot reach f7) and material is level; do not invent a justification."
+    },
+    {
+      "id": "T5",
+      "case": "Follow-up after the position changes",
+      "profile": "improver",
+      "fen": "r1b1kbnr/pppp1ppp/8/4N1q1/2BnP3/8/PPPP1PPP/RNBQK2R w KQkq - 1 5",
+      "prompt": "OK, I took on e5 anyway and they played Qg5. Should I grab f7 with the knight now?",
+      "proposed": "Nxf7",
+      "expect": "Use the new position: Nxf7? loses to ...Qxg2 (then Rf1 Qxe4+ Be2 Nf3#); recommend the engine's move and keep the explanation tied to the double attack on g2."
+    },
+    {
+      "id": "T6",
+      "case": "Same concept for two levels",
+      "profiles": [
+        "beginner",
+        "club"
+      ],
+      "fen": "r3k3/8/8/3N4/8/8/8/4K3 w - - 0 1",
+      "prompt": "Explain why Nc7+ works.",
+      "expect": "Beginner: plain 'fork' explanation (check plus attack on a8, king must move, rook falls), one picture-level rule. Club: brief, names the royal fork and tempo-gain via check, links to related patterns, no basic definitions. Both must avoid overclaiming: after Nc7+ K-moves Nxa8, king and knight vs king is a draw (engine 0.00), so 'wins the rook' is right but 'winning position' is wrong."
+    }
+  ]
+}

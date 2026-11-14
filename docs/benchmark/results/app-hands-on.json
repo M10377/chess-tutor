@@ -1,0 +1,73 @@
+{
+  "checkedAt": "2026-11-14T05:35:26.977Z",
+  "url": "https://m10377.github.io/chess-tutor/",
+  "browser": "Playwright Chromium (headless, cloud container)",
+  "loadMs": 3695,
+  "g1ReviewMs": 3540,
+  "g1Clicks": 4,
+  "g1Summary": "\tOpponent\tInternalGuess\nAccuracy\t98.3\t69.0\n?! Inaccuracies\t0\t1\n? Mistakes\t0\t1\n?? Blunders\t0\t0",
+  "g1Verdict": "5... Bxd1: Mistake · best was dxe5 (green arrow)\nEval M2 · engine line: Bxf7+ Ke7 Nd5#",
+  "askButtons": [
+    "Ask Claude about this move",
+    "Ask Claude to coach this game"
+  ],
+  "puzzlesHome": "Puzzles from your games\n\n1 due now · 1 total · 0 learned\n\nStart (1 due)\nPractice all 1\n\nPuzzles you solve come back after 1, 3, 7, 14, then 30 days. Ones you miss come back in 10 minutes.",
+  "puzzleText": "← End session\n\nPuzzle 1 of 1\n\nBlack to move. Find the best move.\n\nIn your game vs Opponent, you played Bxd1 here on move 5, which was a mistake.\n\nShow answer\n\nDrag a piece, or tap it and then tap where it should go.",
+  "puzzleWrong": "Bxd1 isn't it. Try again, or show the answer.",
+  "puzzleReveal": "The answer was dxe5.",
+  "progress": "Your progress\n1\ngames reviewed\n0–0–1\nwins–draws–losses\n69.0\naverage accuracy\n0.0\nblunders per game (1.0 mistakes)\nAccuracy per game\n60\n70\n80\n90\n100\noldest\nnewest\n\nEach dot is a game (green win, red loss, grey draw); the line is your 5-game average. Click a dot to open that game.\n\nWhere your errors happen\nOpening\n2.0\nMiddlegame\n0.0\nEndgame\n0.0\n\nInaccuracies, mistakes and blunders per game. Opening = first 10 moves; endgame = few pieces left.\n\nWhat to work on\nReview at least 5 games for reliable patterns. \"Analyze all\" on the Games tab does a month at once.\nMost of your errors come in the openin",
+  "a11y": {
+    "buttons": 4,
+    "unnamedButtons": 0,
+    "boardSquares": 0,
+    "squaresWithRoleOrLabel": 0,
+    "lang": "en",
+    "title": "Chess Tutor",
+    "note": "a11y counts above were taken on the Progress page (no board); see chesscomImport.board for board checks"
+  },
+  "mobileOverflow": false,
+  "pwa": {
+    "sw": 0,
+    "manifest": false
+  },
+  "consoleErrors": [],
+  "chesscomImport": {
+    "gameRows": 19,
+    "errorText": [],
+    "monthOptions": 1,
+    "firstRow": "Won\nvs fruitconsoomer (1000)\nBlack · rapid · Nov 10",
+    "board": {
+      "squares": 64,
+      "focusable": 0,
+      "withLabel": 0,
+      "liveRegion": true
+    },
+    "tabStops": [
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:",
+      "DIV:"
+    ]
+  }
+}
