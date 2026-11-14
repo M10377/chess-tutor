@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-11-14T05:38:03.162Z",
+  "account": "anonymous (no login)",
+  "browser": "Playwright Chromium headless, cloud container",
+  "puzzleUi": "Puzzle #0LEQK\n\nRating: hidden\n\nPlayed 34,317 times\n\nFrom game 10+0 • Rapid\n\nKukushonok (1840)\nLindalen (1781)\n\nTo get personalised puzzles:\n\nREGISTER\n« Puzzle Themes\n\nA bit of everything. You don't know what to expect, so be ready for anything! Just like in real games.\n\nJump to next puzzle immediately\n1\n2\n3\n4\n5\n6\n7\n8\na\nb\nc\nd\ne\nf\ng\nh\n1\nc4\nNf6\n2\nNc3\ng6\n3\ne4\nBg7\n4\ne5\nNg8\n5\nd4\nd6\n6\nNf3\nBg4\n7\nBf4\nNc6\n8\nBe2\ndxe5\n9\nNxe5\nBxe2\n10\nNxe2\nNxe5\n11\ndxe5\ne6\n12\nQa4+\nc6\n13\nRd1\nQb6\n14\nb4\nNe7\n15\nO-O\nNf5\n16\ng4\nNe7\n1",
+  "puzzleButtons": [
+    "REGISTER",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "pasteUrl": "https://lichess.org/paste",
+  "pasteForm": 1,
+  "importUrl": "https://lichess.org/import",
+  "importMs": 4188,
+  "importPage": "lichess.org\nPerforming security verification\n\nThis website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.\n\nRay ID: a5a3aab87ade332e\nPerformance and Security by Cloudflare\nPrivacy",
+  "learn": "Accessibility - Enable blind mode\nlichess.org\nPLAY\nPUZZLES\nLEARN\nWATCH\nCOMMUNITY\nTOOLS\nDONATE\nSIGN IN\nREGISTER\nLearn chess\nby playing!\nProgress: 0%\nCHESS PIECES\nplay!\nThe rook\n\nIt moves in straight lines\n\nThe bishop\n\nIt moves diagonally\n\nThe queen\n\nQueen = rook + bishop\n\nThe king\n\nThe most important piece\n\nThe knight\n\nIt moves in an L shape\n\nThe pawn\n\nIt moves forward only\n\nFUNDAMENTALS\nCapture\n\nTake the enemy pieces\n\nProtection\n\nKeep your pieces safe\n\nCombat\n\nCapture and defend pieces\n\nCheck in",
+  "practice": "Accessibility - Enable blind mode\nlichess.org\nPLAY\nPUZZLES\nLEARN\nWATCH\nCOMMUNITY\nTOOLS\nDONATE\nSIGN IN\nREGISTER\nPractice\nmakes your chess perfect\nProgress: 0%\nSign up to save your progress\nCHECKMATES\nPiece Checkmates I\nBasic checkmates\nCheckmate Patterns I\nRecognize the patterns\nCheckmate Patterns II\nRecognize the patterns\nCheckmate Patterns III\nRecognize the patterns\nCheckmate Patterns IV\nRecognize the patterns\nPiece Checkmates II\nChallenging checkmates\nKnight & Bishop Mate\nInteractive lesson\nFUNDAMENTAL TACTICS\nThe Pin\nPin it to win it\nThe Skewer\nYum - skewers!\nThe Fork\nUse the fork, Luke\nDiscovered Attacks\nIncluding discovered checks\nDouble Check\nA very powerful tactic\nOverloaded Pieces\nThey have too much work\nZwischenzug\nIn-between moves\nX-Ray\nAttacking through an enemy piece\nADVANCED T"
+}
