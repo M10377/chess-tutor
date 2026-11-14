@@ -28,7 +28,7 @@ export function score(t, text) {
     r.spoiler = sanHit || pieceAndSquare ? 'full' : squareHit ? 'partial' : 'none'
   }
   if (t.id === 'T4-illegal') {
-    r.saysIllegal = /illegal|not legal|isn't legal|can(no|')t (play|reach|go|capture|take)|not possible|impossible|blocked/i.test(text)
+    r.saysIllegal = /illegal|not (a )?legal|isn't legal|can(no|')t (play|reach|go|capture|take)|not possible|impossible|blocked/i.test(text)
     r.correctsMaterial = /(material is|material's) (equal|level|even)|not (a )?pawn up|aren't (a )?pawn up|no extra pawn|equal material|level material|material (is )?(still )?(equal|even|level)/i.test(text)
   }
   if (t.fixture === 'T6' || t.fixture === 'L1') r.overclaimsWin = /winning (position|game|endgame)|wins the game|white is winning/i.test(text) && t.fixture === 'T6'

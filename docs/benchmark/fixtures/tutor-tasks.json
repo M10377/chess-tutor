@@ -1,5 +1,5 @@
 {
-  "created": "2026-11-14T05:45:02.951Z",
+  "created": "2026-11-14T05:51:29.315Z",
   "engine": "Stockfish 19 lite single, depth 18",
   "count": 32,
   "tasks": [
@@ -1246,7 +1246,7 @@
           "evalCp": 269
         }
       },
-      "engineLabel": "6...Nf6:inaccuracy(best Qd7)",
+      "engineLabel": "6...Nf6:inaccuracy(best Qf6)",
       "sideToMove": "Black",
       "engine": [
         {
@@ -1472,12 +1472,14 @@
       "fen": "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1",
       "question": "King and pawn, opposition (White to move: draw; Black to move: White wins). What is the result with best play and what is the plan?",
       "tablebase": {
-        "result": "side to move wins",
+        "result": "draw",
         "bestMoves": [
-          "Kd6",
-          "Kf6"
+          "Kd3",
+          "Kf3",
+          "Kd4",
+          "Kf4"
         ],
-        "dtm": 21
+        "dtm": 0
       },
       "sideToMove": "White",
       "engine": [

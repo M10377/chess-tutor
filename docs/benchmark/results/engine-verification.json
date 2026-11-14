@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-14T05:32:14.667Z",
+  "checkedAt": "2026-11-14T05:47:53.328Z",
   "engine": "Stockfish 19 lite single (WASM, node_modules/stockfish)",
   "depth": 20,
   "results": {
@@ -281,24 +281,26 @@
       }
     },
     "E3": {
-      "fen": "4k3/8/4K3/4P3/8/8/8/8 w - - 0 1",
+      "fen": "8/8/4k3/8/4K3/4P3/8/8 w - - 0 1",
       "expectedCategory": "draw",
       "engine": [
         {
-          "eval": "11.37",
-          "line": "Kd6 Kf7 e6+ Kg6 e7 Kf5 Kc5 Ke6"
+          "eval": "0.00",
+          "line": "Kf4 Kf6 e4 Ke6 e5 Ke7 Kf5 Kf7"
         },
         {
-          "eval": "9.45",
-          "line": "Kf6 Kf8 Ke6 Kg7 Kd6 Kg6 e6 Kf6"
+          "eval": "0.00",
+          "line": "Kd4 Kd6 e4 Ke6 e5 Ke7 Kd3 Kf7"
         }
       ],
       "tablebase": {
-        "category": "win",
-        "dtm": 21,
+        "category": "draw",
+        "dtm": 0,
         "bestMoves": [
-          "Kd6",
-          "Kf6"
+          "Kd3",
+          "Kf3",
+          "Kd4",
+          "Kf4"
         ]
       }
     },
@@ -308,11 +310,11 @@
       "engine": [
         {
           "eval": "0.00",
-          "line": "Kd7 Rh7+ Ke8 Rg7 Rh6 Rb7 Rg6 Ra7"
+          "line": "Kd7 Rh7+ Ke8 Rg7 Rb6 Kd4 Ra6 Kc5"
         },
         {
-          "eval": "0.00",
-          "line": "Ke8 Rh8+ Kd7 Rg8 Rh6 Rg7+ Ke8 Rb7"
+          "eval": "-0.05",
+          "line": "Rg6 Rh8+ Kd7 Rh7+ Ke8 Kd4 Ra6 Rb7"
         }
       ],
       "tablebase": {
@@ -339,8 +341,8 @@
           "line": "Nf7+ Kg8 Nh6+ Kh8 Qg8+ Rxg8 Nf7#"
         },
         {
-          "eval": "9.39",
-          "line": "Qb4 Rc8 Qd4 Rc1+ Kg2 Rd1 Qxd1 gxh6"
+          "eval": "9.19",
+          "line": "Qb4 Rc8 Qd4 Rc1+ Kg2 Rg1+ Qxg1 gxh6"
         }
       ]
     },
@@ -349,15 +351,15 @@
       "legalFen": true,
       "engine": [
         {
-          "eval": "1.26",
-          "line": "Nxd4 exd4 O-O c6 Re1 d6 c3 Be7"
+          "eval": "1.19",
+          "line": "Nxd4 exd4 O-O Nf6 Re1 d6 c3 Be7"
         },
         {
-          "eval": "0.92",
+          "eval": "0.90",
           "line": "O-O Nxf3+ Qxf3 Qf6 Qg3 d6 Nc3 c6"
         },
         {
-          "eval": "0.76",
+          "eval": "0.72",
           "line": "Nc3 c6 O-O Nxf3+ Qxf3 Nf6 d4 d6"
         }
       ],
@@ -365,8 +367,8 @@
       "afterProposed": {
         "fen": "r1bqkbnr/pppp1ppp/8/4N3/2BnP3/8/PPPP1PPP/RNBQK2R b KQkq - 0 4",
         "opponentBest": {
-          "eval": "0.52",
-          "line": "Qg5 O-O Qxe5 c3 Ne6 d4 Qxe4 Re1"
+          "eval": "0.92",
+          "line": "Qg5 Bxf7+ Kd8 O-O Qxe5 d3 Nh6 Bd5"
         }
       }
     },
@@ -375,20 +377,20 @@
       "legalFen": true,
       "engine": [
         {
-          "eval": "0.21",
-          "line": "d4 exd4 Nxd4 Nf6 Nxc6 bxc6 e5 Qe7"
+          "eval": "0.35",
+          "line": "d4 exd4 Nxd4 Bc5 Nb3 Bb6 Nc3 d6"
+        },
+        {
+          "eval": "0.23",
+          "line": "Bb5 a6 Ba4 Nf6 O-O Be7 d3 b5"
         },
         {
           "eval": "0.16",
-          "line": "Bb5 Nf6 O-O Nxe4 Re1 Nd6 Nxe5 Nxe5"
+          "line": "Bc4 Nf6 d3 Bc5 Nc3 O-O a3 Nd4"
         },
         {
-          "eval": "0.12",
-          "line": "Bc4 Nf6 d3 Bc5 Nc3 O-O O-O h6"
-        },
-        {
-          "eval": "0.09",
-          "line": "Nc3 Nf6 Bb5 Nd4 Nxd4 exd4 e5 dxc3"
+          "eval": "0.16",
+          "line": "Nc3 Nf6 Bb5 Bd6 d3 O-O Ba4 a6"
         }
       ]
     },
@@ -397,16 +399,16 @@
       "legalFen": true,
       "engine": [
         {
-          "eval": "0.30",
-          "line": "Bb5 Nf6 O-O Nxe4 Re1 Nd6 Nxe5 Be7"
+          "eval": "0.24",
+          "line": "Bb5 Nf6 O-O Nxe4 Re1 Nd6 Bf1 Be7"
         },
         {
-          "eval": "0.13",
+          "eval": "0.16",
           "line": "d4 exd4 Nxd4 Nf6 Nxc6 bxc6 e5 Qe7"
         },
         {
-          "eval": "0.13",
-          "line": "Bc4 Nf6 d3 Bc5 Nc3 d6 Na4 Bb6"
+          "eval": "0.15",
+          "line": "Nc3 Nf6 Bb5 Bb4 O-O O-O d3 Bxc3"
         }
       ],
       "proposedLegal": false
@@ -416,23 +418,23 @@
       "legalFen": true,
       "engine": [
         {
-          "eval": "-0.47",
+          "eval": "-0.57",
           "line": "O-O Qxe5 c3 Ne6 d4 Qxe4 Re1 Qh4"
         },
         {
-          "eval": "-0.57",
-          "line": "Bxf7+ Kd8 O-O Qxe5 c3 Ne6 d3 Qf6"
+          "eval": "-0.84",
+          "line": "Bxf7+ Kd8 O-O Qxe5 d3 Nh6 Bd5 c6"
         },
         {
-          "eval": "-1.55",
-          "line": "d3 Qxg2 Rf1 d6 c3 Bh3 Nd2 dxe5"
+          "eval": "-1.59",
+          "line": "d3 Qxg2 Rf1 d6 c3 dxe5 cxd4 Bh3"
         }
       ],
       "proposedLegal": true,
       "afterProposed": {
         "fen": "r1b1kbnr/pppp1Npp/8/6q1/2BnP3/8/PPPP1PPP/RNBQK2R b KQkq - 0 5",
         "opponentBest": {
-          "eval": "6.45",
+          "eval": "6.44",
           "line": "Qxg2 d3 Qxh1+ Kd2 Qxd1+ Kxd1 d5 Bxd5"
         }
       }
@@ -443,15 +445,15 @@
       "engine": [
         {
           "eval": "0.00",
-          "line": "Nc7+ Kd7 Nxa8 Kc6 Ke2 Kb7 Kd2 Kc6"
+          "line": "Nc7+ Kd7 Nxa8 Kc6 Ke2 Kb7 Kd3 Kxa8"
         },
         {
-          "eval": "-0.04",
-          "line": "Kf2 Ra3 Ne3 Ke7 Kf3 Ke6 Ke4 Ra4+"
+          "eval": "-0.11",
+          "line": "Ke2 Ra3 Ne3 Kd7 Kf3 Ra4 Ke2 Ke6"
         },
         {
-          "eval": "-0.08",
-          "line": "Ke2 Rd8 Nf4 Ke7 Ke3 Rg8 Ke4 Kd6"
+          "eval": "-0.12",
+          "line": "Kf2 Ra3 Ne3 Kd7 Kf3 Ra4 Ke2 Ke6"
         }
       ]
     },
@@ -460,17 +462,17 @@
       "finalFen": "r1bqk2r/1pp2ppp/p1np1n2/2b1p3/P1B1P3/2PP1N2/1P3PPP/RNBQ1RK1 b kq - 0 7",
       "engineAtEnd": [
         {
-          "eval": "-0.12",
-          "line": "Ba7 Nbd2 O-O h3 h6 Re1 Be6 b4"
+          "eval": "-0.09",
+          "line": "O-O h3 h6 a5 Ne7 d4 Ba7 Re1"
         }
       ]
     },
     "G1": {
-      "analysisMs": 2241,
+      "analysisMs": 2947,
       "positions": 14,
       "accuracy": {
-        "w": 96.7,
-        "b": 67.9
+        "w": 95.9,
+        "b": 66.4
       },
       "labels": [
         "1.e4:best",
@@ -480,7 +482,7 @@
         "3.Bc4:good(best d4)",
         "3...Bg4:good(best Be7)",
         "4.Nc3:good(best h3)",
-        "4...g6:inaccuracy(best Qd7)",
+        "4...g6:inaccuracy(best Nc6)",
         "5.Nxe5:best",
         "5...Bxd1:mistake(best dxe5)",
         "6.Bxf7+:best",
@@ -493,22 +495,22 @@
           "played": "Bxd1",
           "best": "dxe5",
           "label": "mistake",
-          "winBefore": 30
+          "winBefore": 31
         }
       ],
       "prompts": {
-        "moveQuestionChars": 1146,
+        "moveQuestionChars": 1145,
         "gameSummaryChars": 1023
       },
-      "sampleMoveQuestion": "I'm a club player rated about 1100 reviewing one of my chess games. Please explain move 5... Bxd1 (Black) in plain English.\n\nStockfish analysis (depth ~16; evals from White's point of view, + is good for White):\n- Position before the move (FEN): rn1qkbnr/ppp2p1p/3p2p1/4N3/2B1P1b1/2N5/PPPP1PPP/R1BQK2R b KQkq - 0 5\n- Eval before: +2.3. Eval after Bxd1: M2.\n- Stockfish labels Bxd1 as: mistake. Black's winning chances went from 30% to 2%.\n- Stockfish's preferred move: dxe5. Its main line: dxe5 Qxg4 Nc6 Qg3 Bd6 Qf3\n- Best play after Bxd1: Bxf7+ Ke7 Nd5#\n\nExplain what was wrong with Bxd1 and why dxe5 is better: what tactical or positional point did I miss, and what should I have noticed? Then give me one short rule of thumb to avoid this kind of mistake.\nBase your explanation on the Stockfish analysis given here. Do not invent other variations or claim things the engine data does not support; if something is unclear, say so.\n\nFull game (PGN):\n[Event \"Benchmark G1\"]\n[White \"Opponent\"]\n[Black \"InternalGuess\"]\n[Result \"1-0\"]\n[WhiteElo \"1150\"]\n[BlackElo \"1100\"]\n\n1. e4 e5 2. Nf3 d6 3. Bc4 Bg4 4. Nc3 g6 5. Nxe5 Bxd1 6. Bxf7+ Ke7 7. Nd5# 1-0",
+      "sampleMoveQuestion": "I'm a club player rated about 1100 reviewing one of my chess games. Please explain move 5... Bxd1 (Black) in plain English.\n\nStockfish analysis (depth ~16; evals from White's point of view, + is good for White):\n- Position before the move (FEN): rn1qkbnr/ppp2p1p/3p2p1/4N3/2B1P1b1/2N5/PPPP1PPP/R1BQK2R b KQkq - 0 5\n- Eval before: +2.2. Eval after Bxd1: M2.\n- Stockfish labels Bxd1 as: mistake. Black's winning chances went from 31% to 2%.\n- Stockfish's preferred move: dxe5. Its main line: dxe5 Qxg4 Nc6 d3 Nd4 Qg3\n- Best play after Bxd1: Bxf7+ Ke7 Nd5#\n\nExplain what was wrong with Bxd1 and why dxe5 is better: what tactical or positional point did I miss, and what should I have noticed? Then give me one short rule of thumb to avoid this kind of mistake.\nBase your explanation on the Stockfish analysis given here. Do not invent other variations or claim things the engine data does not support; if something is unclear, say so.\n\nFull game (PGN):\n[Event \"Benchmark G1\"]\n[White \"Opponent\"]\n[Black \"InternalGuess\"]\n[Result \"1-0\"]\n[WhiteElo \"1150\"]\n[BlackElo \"1100\"]\n\n1. e4 e5 2. Nf3 d6 3. Bc4 Bg4 4. Nc3 g6 5. Nxe5 Bxd1 6. Bxf7+ Ke7 7. Nd5# 1-0",
       "samplePuzzleQuestion": "I'm working on a chess puzzle from one of my own games. Position (FEN): rn1qkbnr/ppp2p1p/3p2p1/4N3/2B1P1b1/2N5/PPPP1PPP/R1BQK2R b KQkq - 0 5\nBlack to move. In the game I played Bxd1, which Stockfish rated a mistake. Stockfish's best move is dxe5.\nExplain in plain English why dxe5 is strong and what is wrong with Bxd1, and give me one pattern to remember. Base your explanation on the Stockfish analysis given here. Do not invent other variations or claim things the engine data does not support; if something is unclear, say so."
     },
     "G2": {
-      "analysisMs": 8354,
+      "analysisMs": 8064,
       "positions": 34,
       "accuracy": {
-        "w": 97.8,
-        "b": 86.8
+        "w": 96.4,
+        "b": 84.9
       },
       "labels": [
         "1.e4:best",
@@ -516,13 +518,13 @@
         "2.Nf3:best",
         "2...d6:good(best Nc6)",
         "3.d4:best",
-        "3...Bg4:good(best Nd7)",
+        "3...Bg4:good(best Nf6)",
         "4.dxe5:best",
         "4...Bxf3:good(best Nc6)",
         "5.Qxf3:best",
         "5...dxe5:best",
         "6.Bc4:good(best Qb3)",
-        "6...Nf6:inaccuracy(best Qd7)",
+        "6...Nf6:inaccuracy(best Qf6)",
         "7.Qb3:best",
         "7...Qe7:good(best Bc5)",
         "8.Nc3:good(best Qxb7)",
@@ -534,11 +536,11 @@
         "11.Bxb5+:best",
         "11...Nbd7:good(best Qd7)",
         "12.O-O-O:best",
-        "12...Rd8:good(best Qc5)",
+        "12...Rd8:good(best Rb8)",
         "13.Rxd7:best",
         "13...Rxd7:good(best Nxd7)",
         "14.Rd1:best",
-        "14...Qe6:good(best Qb4)",
+        "14...Qe6:good(best h5)",
         "15.Bxd7+:best",
         "15...Nxd7:good(best Qxd7)",
         "16.Qb8+:best",
@@ -547,10 +549,10 @@
       ],
       "puzzlesCreated": [],
       "prompts": {
-        "moveQuestionChars": 1233,
+        "moveQuestionChars": 1232,
         "gameSummaryChars": 1110
       },
-      "sampleMoveQuestion": "I'm an improving club player reviewing one of my chess games. Please explain move 6... Nf6 (Black) in plain English.\n\nStockfish analysis (depth ~16; evals from White's point of view, + is good for White):\n- Position before the move (FEN): rn1qkbnr/ppp2ppp/8/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R b KQkq - 1 6\n- Eval before: +1.4. Eval after Nf6: +2.7.\n- Stockfish labels Nf6 as: inaccuracy. Black's winning chances went from 38% to 27%.\n- Stockfish's preferred move: Qd7. Its main line: Qd7 Nc3 Nf6 Nd5 Nxd5 Bxd5\n- Best play after Nf6: Qb3 Bc5 Bxf7+ Kf8 Bd5 c6\n\nExplain what was wrong with Nf6 and why Qd7 is better: what tactical or positional point did I miss, and what should I have noticed? Then give me one short rule of thumb to avoid this kind of mistake.\nBase your explanation on the Stockfish analysis given here. Do not invent other variations or claim things the engine data does not support; if something is unclear, say so.\n\nFull game (PGN):\n[Event \"Paris Opera\"]\n[White \"Morphy\"]\n[Black \"InternalGuess\"]\n[Result \"1-0\"]\n\n1. e4 e5 2. Nf3 d6 3. d4 Bg4 4. dxe5 Bxf3 5. Qxf3 dxe5 6. Bc4 Nf6 7. Qb3 Qe7 8. Nc3 c6 9. Bg5 b5 10. Nxb5 cxb5 11. Bxb5+ Nbd7 12. O-O-O Rd8 13. Rxd7 Rxd7 14. Rd1 Qe6 15. Bxd7+ Nxd7 16. Qb8+ Nxb8 17. Rd8# 1-0",
+      "sampleMoveQuestion": "I'm an improving club player reviewing one of my chess games. Please explain move 6... Nf6 (Black) in plain English.\n\nStockfish analysis (depth ~16; evals from White's point of view, + is good for White):\n- Position before the move (FEN): rn1qkbnr/ppp2ppp/8/4p3/2B1P3/5Q2/PPP2PPP/RNB1K2R b KQkq - 1 6\n- Eval before: +1.1. Eval after Nf6: +2.8.\n- Stockfish labels Nf6 as: inaccuracy. Black's winning chances went from 40% to 26%.\n- Stockfish's preferred move: Qf6. Its main line: Qf6 Qb3 Nd7 Qxb7 Rb8 Qd5\n- Best play after Nf6: Qb3 Bc5 Bxf7+ Kf8 Bd5 c6\n\nExplain what was wrong with Nf6 and why Qf6 is better: what tactical or positional point did I miss, and what should I have noticed? Then give me one short rule of thumb to avoid this kind of mistake.\nBase your explanation on the Stockfish analysis given here. Do not invent other variations or claim things the engine data does not support; if something is unclear, say so.\n\nFull game (PGN):\n[Event \"Paris Opera\"]\n[White \"Morphy\"]\n[Black \"InternalGuess\"]\n[Result \"1-0\"]\n\n1. e4 e5 2. Nf3 d6 3. d4 Bg4 4. dxe5 Bxf3 5. Qxf3 dxe5 6. Bc4 Nf6 7. Qb3 Qe7 8. Nc3 c6 9. Bg5 b5 10. Nxb5 cxb5 11. Bxb5+ Nbd7 12. O-O-O Rd8 13. Rxd7 Rxd7 14. Rd1 Qe6 15. Bxd7+ Nxd7 16. Qb8+ Nxb8 17. Rd8# 1-0",
       "samplePuzzleQuestion": null
     }
   }
