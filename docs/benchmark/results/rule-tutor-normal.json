@@ -1,7 +1,7 @@
 {
   "path": "rule-based (no model)",
   "depth": "normal",
-  "ranAt": "2026-11-14T05:47:31.978Z",
+  "ranAt": "2026-11-14T05:51:30.406Z",
   "results": [
     {
       "id": "L1-explain",
@@ -12,7 +12,8 @@
         "unsupportedSan": [],
         "words": 46,
         "overclaimsWin": false
-      }
+      },
+      "teachingScore": 2
     },
     {
       "id": "L1-transfer",
@@ -23,38 +24,43 @@
         "unsupportedSan": [],
         "words": 68,
         "overclaimsWin": false
-      }
+      },
+      "teachingScore": 2
     },
     {
       "id": "P1-hint",
-      "totalMs": 2.2,
-      "text": "Start with a forcing move: a check. After the reply, look at what is left undefended.",
+      "totalMs": 1.9,
+      "text": "Two enemy pieces stand on the same line. Can you attack the front one so that it has to move?",
       "ladder": [
-        "Start with a forcing move: a check. After the reply, look at what is left undefended.",
+        "Two enemy pieces stand on the same line. Can you attack the front one so that it has to move?",
         "Use your rook.",
         "The move is Rh8+, and the main line is Rh8+ Kf7 Rxc8."
       ],
-      "motifs": [],
+      "motifs": [
+        "skewer"
+      ],
       "auto": {
         "sanMentioned": 0,
         "unsupportedSan": [],
-        "words": 16,
+        "words": 20,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "P1-explain",
-      "totalMs": 5.5,
-      "text": "Rh8+ works because it gives check, so your opponent has no time to defend; the line Rh8+ Kf7 Rxc8 leaves you +4.56 pawns ahead. Next: Do 10 \"mate in 2\" puzzles.",
+      "totalMs": 4.9,
+      "text": "Rh8+ is a skewer: it attacks the king, which has to move and leaves the rook behind it to be taken. The line Rh8+ Kf7 Rxc8 leaves you +4.56 pawns ahead. A skewer attacks a valuable piece that must move, exposing a piece behind it. Next: Do 10 \"skewer\" puzzles.",
       "auto": {
         "sanMentioned": 3,
         "unsupportedSan": [],
-        "words": 31
-      }
+        "words": 50
+      },
+      "teachingScore": 3
     },
     {
       "id": "P2-hint",
-      "totalMs": 2.4,
+      "totalMs": 1.9,
       "text": "There is a forced checkmate in 2. Look at the enemy king: which squares can it escape to, and what blocks them?",
       "ladder": [
         "There is a forced checkmate in 2. Look at the enemy king: which squares can it escape to, and what blocks them?",
@@ -62,6 +68,7 @@
         "The move is Qd1+, and the main line is Qd1+ Nxd1 Rxd1#."
       ],
       "motifs": [
+        "skewer",
         "sacrifice",
         "back-rank mate",
         "checkmate"
@@ -71,21 +78,23 @@
         "unsupportedSan": [],
         "words": 22,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "P2-explain",
-      "totalMs": 3.5,
-      "text": "Qd1+ Nxd1 Rxd1# is a forced checkmate (sacrifice). It is a sacrifice: your queen can be taken, but taking it allows mate. A sacrifice gives up material on purpose to get something bigger. Next: Do 10 \"sacrifice\" puzzles.",
+      "totalMs": 3.8,
+      "text": "Qd1+ Nxd1 Rxd1# is a forced checkmate (skewer). It is a sacrifice: your queen can be taken, but taking it allows mate. A skewer attacks a valuable piece that must move, exposing a piece behind it. Next: Do 10 \"skewer\" puzzles.",
       "auto": {
         "sanMentioned": 3,
         "unsupportedSan": [],
-        "words": 38
-      }
+        "words": 41
+      },
+      "teachingScore": 2
     },
     {
       "id": "P3-hint",
-      "totalMs": 0.9,
+      "totalMs": 0.7,
       "text": "Look for a move that attacks two things at once, ideally with check.",
       "ladder": [
         "Look for a move that attacks two things at once, ideally with check.",
@@ -100,21 +109,23 @@
         "unsupportedSan": [],
         "words": 13,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "P3-explain",
-      "totalMs": 6.8,
-      "text": "Bc5+ works because it attacks the rook on a7 and the pawn on a3 and the king on g1 at once; the line Bc5+ Kg2 Bxa7 leaves you +5.25 pawns ahead. Next: Do 10 \"fork\" puzzles.",
+      "totalMs": 3.3,
+      "text": "Bc5+ works because it attacks the rook on a7 and the pawn on a3 and the king on g1 at once; the line Bc5+ Kg2 Bxa7 Nc3 Rc8 leaves you +5.25 pawns ahead. Next: Do 10 \"fork\" puzzles.",
       "auto": {
-        "sanMentioned": 3,
+        "sanMentioned": 5,
         "unsupportedSan": [],
-        "words": 36
-      }
+        "words": 38
+      },
+      "teachingScore": 2
     },
     {
       "id": "P4-hint",
-      "totalMs": 1.5,
+      "totalMs": 1.6,
       "text": "There is a forced checkmate in 2. Look at the enemy king: which squares can it escape to, and what blocks them?",
       "ladder": [
         "There is a forced checkmate in 2. Look at the enemy king: which squares can it escape to, and what blocks them?",
@@ -122,7 +133,6 @@
         "The move is Rxh6+, and the main line is Rxh6+ Kxh6 Qh5#."
       ],
       "motifs": [
-        "fork",
         "sacrifice",
         "checkmate"
       ],
@@ -131,77 +141,86 @@
         "unsupportedSan": [],
         "words": 22,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "P4-explain",
-      "totalMs": 2.7,
-      "text": "Rxh6+ Kxh6 Qh5# is a forced checkmate (fork). It is a sacrifice: your rook can be taken, but taking it allows mate. Next: Do 10 \"fork\" puzzles.",
+      "totalMs": 2.3,
+      "text": "Rxh6+ Kxh6 Qh5# is a forced checkmate (sacrifice). It is a sacrifice: your rook can be taken, but taking it allows mate. Next: Do 10 \"sacrifice\" puzzles.",
       "auto": {
         "sanMentioned": 3,
         "unsupportedSan": [],
         "words": 27
-      }
+      },
+      "teachingScore": 2,
+      "ratingNote": "Calls it a sacrifice; does not explain the king being dragged to h6"
     },
     {
       "id": "P5-hint",
-      "totalMs": 1.4,
-      "text": "Look for a move that attacks two things at once, ideally with check.",
+      "totalMs": 1.6,
+      "text": "Look for an enemy piece that cannot move without exposing something more valuable behind it.",
       "ladder": [
-        "Look for a move that attacks two things at once, ideally with check.",
+        "Look for an enemy piece that cannot move without exposing something more valuable behind it.",
         "Use your queen.",
         "The move is Qa5+, and the main line is Qa5+ Bd2 Qxb5."
       ],
       "motifs": [
-        "fork"
+        "pin"
       ],
       "auto": {
         "sanMentioned": 0,
         "unsupportedSan": [],
-        "words": 13,
+        "words": 15,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "P5-explain",
-      "totalMs": 5.4,
-      "text": "Qa5+ works because it attacks the bishop on b5 and the king on e1 at once; the line Qa5+ Bd2 Qxb5 leaves you +6.13 pawns ahead. Next: Do 10 \"fork\" puzzles.",
+      "totalMs": 3.1,
+      "text": "Qa5+ is a pin: it attacks the pawn, which cannot move without exposing the rook behind it. The line Qa5+ Bd2 Qxb5 leaves you +6.13 pawns ahead. Next: Do 10 \"pin\" puzzles.",
       "auto": {
         "sanMentioned": 3,
         "unsupportedSan": [],
-        "words": 31
-      }
+        "words": 32
+      },
+      "teachingScore": 2
     },
     {
       "id": "P6-hint",
       "totalMs": 1.1,
-      "text": "Look for your opponent's most dangerous threat first, then for a move that improves your worst-placed piece.",
+      "text": "Look for an enemy piece that cannot move without exposing something more valuable behind it.",
       "ladder": [
-        "Look for your opponent's most dangerous threat first, then for a move that improves your worst-placed piece.",
+        "Look for an enemy piece that cannot move without exposing something more valuable behind it.",
         "Use your rook.",
         "The move is Rd1, and the main line is Rd1 Rd4 Nxd2."
       ],
-      "motifs": [],
+      "motifs": [
+        "pin"
+      ],
       "auto": {
         "sanMentioned": 0,
         "unsupportedSan": [],
-        "words": 17,
+        "words": 15,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "P6-explain",
-      "totalMs": 2.4,
-      "text": "Rd1 works because it wins material by force; the line Rd1 Rd4 Nxd2 leaves you +4.73 pawns ahead. Next: Do 10 \"mate in 2\" puzzles.",
+      "totalMs": 1.9,
+      "text": "Rd1 is a pin: it attacks the knight, which cannot move without exposing the rook behind it. The line Rd1 Rd4 Nxd2 leaves you +4.73 pawns ahead. Next: Do 10 \"pin\" puzzles.",
       "auto": {
         "sanMentioned": 3,
         "unsupportedSan": [],
-        "words": 25
-      }
+        "words": 32
+      },
+      "teachingScore": 3
     },
     {
       "id": "P7-hint",
-      "totalMs": 1.2,
+      "totalMs": 1.4,
       "text": "Something of your opponent's is loose. Count attackers and defenders.",
       "ladder": [
         "Something of your opponent's is loose. Count attackers and defenders.",
@@ -216,21 +235,25 @@
         "unsupportedSan": [],
         "words": 10,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 1,
+      "ratingNote": "Clearance sacrifice not detected; 'something is loose' is vague"
     },
     {
       "id": "P7-explain",
-      "totalMs": 4.3,
-      "text": "Nxd4 works because it wins material by force; the line Nxd4 exd4 Ba4 Qxa4+ Qxa4 leaves you +5.98 pawns ahead. It is a sacrifice: your knight can be taken, but taking it loses more. Pattern: sacrifice. Next: Do 10 \"sacrifice\" puzzles.",
+      "totalMs": 3.2,
+      "text": "Nxd4 works because it wins material by force; the line Nxd4 exd4 Ba4 Nxf6+ Ke7 leaves you +5.98 pawns ahead. It is a sacrifice: your knight can be taken, but taking it loses more. Pattern: sacrifice. Next: Do 10 \"sacrifice\" puzzles.",
       "auto": {
-        "sanMentioned": 4,
+        "sanMentioned": 5,
         "unsupportedSan": [],
         "words": 41
-      }
+      },
+      "teachingScore": 1,
+      "ratingNote": "Generic 'wins material by force'; misses the clearance/pin idea"
     },
     {
       "id": "P8-hint",
-      "totalMs": 1.7,
+      "totalMs": 1.9,
       "text": "There is a forced checkmate in 3. Look at the enemy king: which squares can it escape to, and what blocks them?",
       "ladder": [
         "There is a forced checkmate in 3. Look at the enemy king: which squares can it escape to, and what blocks them?",
@@ -246,37 +269,42 @@
         "unsupportedSan": [],
         "words": 22,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "P8-explain",
-      "totalMs": 3.1,
+      "totalMs": 2.8,
       "text": "hxg7+ Bxg7 Rf8+ Bxf8 Qg8# is a forced checkmate (back-rank mate). Pattern: back-rank mate. Next: Do 10 \"back-rank mate\" puzzles and check your own back rank before every rook move.",
       "auto": {
         "sanMentioned": 5,
         "unsupportedSan": [],
         "words": 30
-      }
+      },
+      "teachingScore": 2
     },
     {
       "id": "G1-explain",
-      "totalMs": 0.6,
-      "text": "Bxd1 is not best. After Bxd1, your opponent plays Bxf7+, winning your pawn. The engine line Bxd1 Bxf7+ Ke7 Nd5# leaves your opponent with mate in 2. Better is dxe5 (-2.16 pawns for you), main line dxe5 Qxg4 Nc6 d3. Next: Before each move this week, ask: which of my pieces is undefended, and can it be attacked with check?",
+      "totalMs": 0.7,
+      "text": "Bxd1 is a serious mistake: it allows a forced checkmate, Bxd1 Bxf7+ Ke7 Nd5#. Better is dxe5 (-2.16 pawns for you), main line dxe5 Qxg4 Nc6 d3. Next: Do 10 \"mate in 2\" puzzles.",
       "auto": {
         "sanMentioned": 7,
         "unsupportedSan": [],
-        "words": 60
-      }
+        "words": 34
+      },
+      "teachingScore": 3
     },
     {
       "id": "G2-explain",
-      "totalMs": 0.4,
+      "totalMs": 0.6,
       "text": "Nf6 is not best. After Nf6, your opponent plays Qb3. The engine line Nf6 Qb3 Bc5 Bxf7+ Ke7 leaves your opponent +2.69 pawns better. Better is Qf6 (-1.20 pawns for you), main line Qf6 Qb3 Nd7 Qxb7. Next: Before each move this week, ask: which of my pieces is undefended, and can it be attacked with check?",
       "auto": {
         "sanMentioned": 8,
         "unsupportedSan": [],
         "words": 57
-      }
+      },
+      "teachingScore": 1,
+      "ratingNote": "Says Qb3 follows but not why (double attack on b7 and f7 not detected because f7 is defended)"
     },
     {
       "id": "O1-deviation",
@@ -286,51 +314,56 @@
         "sanMentioned": 3,
         "unsupportedSan": [],
         "words": 56
-      }
+      },
+      "teachingScore": 2
     },
     {
       "id": "E1-explain",
       "totalMs": 0,
-      "text": "With perfect play this is side to move wins (mate in about 7 moves). Best moves: Qd7, Qd8, Kd2, Ke2. Plan: use the queen to shrink the box around the enemy king (stay a knight's move away to avoid stalemate), walk your own king up, then mate on the edge. Next: Play this position against the engine until you win (or hold) it twice in a row.",
+      "text": "With perfect play, White wins (mate in about 7 moves). Best moves: Qd7, Qd8, Kd2, Ke2. Plan: use the queen to shrink the box around the enemy king (stay a knight's move away to avoid stalemate), walk your own king up, then mate on the edge. Next: Play this position against the engine until you win (or hold) it twice in a row.",
       "auto": {
         "sanMentioned": 4,
         "unsupportedSan": [],
-        "words": 67
-      }
+        "words": 63
+      },
+      "teachingScore": 2
     },
     {
       "id": "E2-explain",
       "totalMs": 0,
-      "text": "With perfect play this is side to move wins (mate in about 21 moves). Best moves: Rd1+, Rc4, Rc5, Rb1. Plan (Lucena): get your rook to the 4th rank to \"build a bridge\", so your king can step out and the rook blocks the checks. Next: Play this position against the engine until you win (or hold) it twice in a row.",
-      "auto": {
-        "sanMentioned": 4,
-        "unsupportedSan": [],
-        "words": 62
-      }
-    },
-    {
-      "id": "E3-explain",
-      "totalMs": 0,
-      "text": "With perfect play this is side to move wins (mate in about 11 moves). Best moves: Kd6, Kf6. Plan: the defending king keeps the opposition (kings face each other with one square between, and the other side must move). With White to move here, Black can always answer and draw; if Black had to move, White would win. Next: Play this position against the engine until you win (or hold) it twice in a row.",
-      "auto": {
-        "sanMentioned": 2,
-        "unsupportedSan": [],
-        "words": 75
-      }
-    },
-    {
-      "id": "E4-explain",
-      "totalMs": 0,
-      "text": "With perfect play this is a draw. Best moves: Ra2, Ra3, Ra4, Rb6. Plan (Philidor): keep the rook on the 6th rank to stop the white king advancing; once the pawn moves forward, swing the rook back and check from behind. Next: Play this position against the engine until you win (or hold) it twice in a row.",
+      "text": "With perfect play, White wins (mate in about 21 moves). Best moves: Rd1+, Rc4, Rc5, Rb1. Plan (Lucena): get your rook to the 4th rank to \"build a bridge\", so your king can step out and the rook blocks the checks. Next: Play this position against the engine until you win (or hold) it twice in a row.",
       "auto": {
         "sanMentioned": 4,
         "unsupportedSan": [],
         "words": 58
-      }
+      },
+      "teachingScore": 2
+    },
+    {
+      "id": "E3-explain",
+      "totalMs": 0,
+      "text": "With perfect play, this is a draw. Best moves: Kd3, Kf3, Kd4, Kf4. Plan: the defending king keeps the opposition (kings face each other with one square between, and the other side must move). With White to move here, Black can always answer and draw; if Black had to move, White would win. Next: Play this position against the engine until you win (or hold) it twice in a row.",
+      "auto": {
+        "sanMentioned": 4,
+        "unsupportedSan": [],
+        "words": 70
+      },
+      "teachingScore": 2
+    },
+    {
+      "id": "E4-explain",
+      "totalMs": 0,
+      "text": "With perfect play, this is a draw. Best moves: Ra2, Ra3, Ra4, Rb6. Plan (Philidor): keep the rook on the 6th rank to stop the white king advancing; once the pawn moves forward, swing the rook back and check from behind. Next: Play this position against the engine until you win (or hold) it twice in a row.",
+      "auto": {
+        "sanMentioned": 4,
+        "unsupportedSan": [],
+        "words": 58
+      },
+      "teachingScore": 2
     },
     {
       "id": "T1-hint",
-      "totalMs": 1.3,
+      "totalMs": 1.4,
       "text": "There is a forced checkmate in 2. Look at the enemy king: which squares can it escape to, and what blocks them?",
       "ladder": [
         "There is a forced checkmate in 2. Look at the enemy king: which squares can it escape to, and what blocks them?",
@@ -338,7 +371,6 @@
         "The move is Qg8+, and the main line is Qg8+ Rxg8 Nf7#."
       ],
       "motifs": [
-        "fork",
         "sacrifice",
         "smothered mate",
         "checkmate"
@@ -348,17 +380,20 @@
         "unsupportedSan": [],
         "words": 22,
         "spoiler": "none"
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "T2-critique",
-      "totalMs": 0.7,
+      "totalMs": 0.4,
       "text": "Nxe5 is not best. After Nxe5, your opponent plays Qg5, attacking the knight on e5 and the pawn on g2 at the same time. The engine line Nxe5 Qg5 Bxf7+ Kd8 O-O leaves your opponent +0.76 pawns better. Better is Nxd4 (+1.05 pawns for you), main line Nxd4 exd4 O-O Nf6. Next: Do 10 \"double attack\" puzzles and, before each move, list everything your opponent's last move attacks.",
       "auto": {
         "sanMentioned": 8,
         "unsupportedSan": [],
         "words": 68
-      }
+      },
+      "teachingScore": 2,
+      "ratingNote": "Correct double attack, but does not acknowledge the learner's correct observation that e5 is loose"
     },
     {
       "id": "T3-options",
@@ -368,7 +403,8 @@
         "sanMentioned": 8,
         "unsupportedSan": [],
         "words": 89
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "T4-illegal",
@@ -378,43 +414,58 @@
         "sanMentioned": 3,
         "unsupportedSan": [],
         "words": 58,
-        "saysIllegal": false,
+        "saysIllegal": true,
         "correctsMaterial": true
-      }
+      },
+      "teachingScore": 3
     },
     {
       "id": "T5-followup",
-      "totalMs": 0.6,
+      "totalMs": 1.7,
       "text": "Nxf7 is not best. After Nxf7, your opponent plays Qxg2, attacking the pawn on e4 and the rook on h1 at the same time. The engine line Nxf7 Qxg2 d3 Qxh1+ Kd2 leaves your opponent +6.51 pawns better. Better is O-O (-0.65 pawns for you), main line O-O Qxe5 c3 Ne6. Next: Do 10 \"double attack\" puzzles and, before each move, list everything your opponent's last move attacks.",
       "auto": {
         "sanMentioned": 7,
         "unsupportedSan": [],
         "words": 68
-      }
+      },
+      "teachingScore": 2,
+      "ratingNote": "Correct refutation; misses the Nf3# mating net in the line"
     },
     {
       "id": "T6-beginner",
       "totalMs": 1.9,
-      "text": "Nc7+ works because it attacks the rook on a8 and the king on e8 at once; the line Nc7+ leaves you +0.00 pawns ahead. Careful: winning the material does not win the game here. After the exchanges, a lone knight cannot checkmate, so the engine calls it a draw (0.00). A fork is one piece attacking two things at once. Next: Do 10 \"fork\" puzzles.",
+      "text": "Nc7+ works because it attacks the rook on a8 and the king on e8 at once, winning material (line: Nc7+ Kd7 Nxa8). Careful: winning the material does not win the game here. After the exchanges, a lone knight cannot checkmate, so the engine calls it a draw (0.00). A fork is one piece attacking two things at once. Next: Do 10 \"fork\" puzzles.",
       "auto": {
-        "sanMentioned": 1,
+        "sanMentioned": 3,
         "unsupportedSan": [],
-        "words": 65,
+        "words": 63,
         "overclaimsWin": false,
         "mentionsDraw": true
-      }
+      },
+      "teachingScore": 2
     },
     {
       "id": "T6-club",
-      "totalMs": 2,
-      "text": "Nc7+ works because it attacks the rook on a8 and the king on e8 at once; the line Nc7+ leaves you +0.00 pawns ahead. Careful: winning the material does not win the game here. After the exchanges, a lone knight cannot checkmate, so the engine calls it a draw (0.00). Pattern: fork. Next: Do 10 \"fork\" puzzles.",
+      "totalMs": 1.7,
+      "text": "Nc7+ works because it attacks the rook on a8 and the king on e8 at once, winning material (line: Nc7+ Kd7 Nxa8). Careful: winning the material does not win the game here. After the exchanges, a lone knight cannot checkmate, so the engine calls it a draw (0.00). Pattern: fork. Next: Do 10 \"fork\" puzzles.",
       "auto": {
-        "sanMentioned": 1,
+        "sanMentioned": 3,
         "unsupportedSan": [],
-        "words": 57,
+        "words": 55,
         "overclaimsWin": false,
         "mentionsDraw": true
-      }
+      },
+      "teachingScore": 2,
+      "ratingNote": "Correct, including the draw, but no different from the beginner version beyond one line"
     }
-  ]
+  ],
+  "ratingMethod": "Teaching quality 0-3 per tests.md anchors, single rater (Claude), 2026-11-14. Subjective; use for direction only.",
+  "summary": {
+    "tasks": 32,
+    "medianTeaching": 2.0,
+    "meanTeaching": 2.31,
+    "unsupportedMoveAnswers": 0,
+    "hintSpoilers": 0,
+    "maxLatencyMs": 5.2
+  }
 }
