@@ -26,6 +26,9 @@ Type: **H** hands-on, **D** vendor documentation/pricing, **T** third-party arti
 | S18 | Micah's chess.com profile | api.chess.com/pub/player/internalguess/stats and /games/archives | A | Public API | Rapid 958 (13-5-0), tactics 400-766, one archive (2026-11) | Snapshot |
 | S19 | Our app | m10377.github.io/chess-tutor, repo at 4ec859e | H | Web, Chromium | See `baseline.md`, `results/app-hands-on.json` | Cloud browser, not Micah's |
 | S21 | Micah's Mac (Path 2, qwen3:4b) | Remote session, 2026-11-14 ~07:00 UTC | H | Apple M4, Ollama 0.40.16 | Median 137 s per answer, 9/9 hint spoilers, `results/local-llm/qwen3_4b-normal-summary.json` | Full answers stay on the Mac |
+| S22 | lichess opening names | github.com/lichess-org/chess-openings; huggingface.co/datasets/Lichess/chess-openings | D | Data | CC0 1.0; about 3,860 lines in a-e.tsv | Licence read from the Hugging Face card; GitHub repo has no LICENSE file |
+| S23 | Wikibooks Chess Opening Theory | en.wikibooks.org/wiki/Chess_Opening_Theory | D | Web | One page per position; CC BY-SA footer | Share-alike applies to copied text |
+| S24 | lichess opening explorer API | explorer.lichess.ovh/lichess and /masters | H | API | HTTP 401 without a token (2026-11-14); lichess blog says the explorer now requires authentication | |
 | S20 | Micah's Mac (Path 1 run) | Remote session, 2026-11-14 | H | Apple M4, 24 GB, macOS 15.7.4 | All 22 fixtures re-verified; G1 review 1.2 s, G2 3.5 s; 56 s for the full fixture run, ~200 MB | Ollama not installed at time of run |
 
 Not used as evidence: a Chessvia "how it works" page (chessvia-test.onrender.com) that turned out to describe a human-coach marketplace test site.
